@@ -1,6 +1,22 @@
 TARGET = thesis
-LATEX = lualatex
 FLAGS = -synctex=1 -shell-escape
+
+LUALATEX := $(shell command -v lualatex 2>/dev/null)
+BIBER := $(shell command -v biber 2>/dev/null)
+MAKEGLOSSARIES := $(shell command -v makeglossaries 2>/dev/null)
+LATEX = $(LUALATEX)
+
+ifeq ($(strip $(LUALATEX)),)
+$(error "Das Kommando 'lualatex' wurde nicht gefunden. Bitte installiere eine LaTeX-Distribution (z. B. TeX Live mit dem Paket texlive-luatex). Weitere Hinweise findest du in der README.")
+endif
+
+ifeq ($(strip $(BIBER)),)
+$(error "Das Kommando 'biber' wurde nicht gefunden. Bitte stelle sicher, dass die Bibliographie-Werkzeuge deiner LaTeX-Distribution installiert sind.")
+endif
+
+ifeq ($(strip $(MAKEGLOSSARIES)),)
+$(error "Das Kommando 'makeglossaries' wurde nicht gefunden. Installiere die entsprechenden Glossaries-Werkzeuge deiner LaTeX-Distribution.")
+endif
 
 .PHONY: all tidy clean
 
