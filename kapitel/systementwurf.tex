@@ -1,0 +1,132 @@
+\chapter{Systementwurf}
+
+\section{Hardware-Architektur}
+Ziel der Hardware-Architektur ist eine robuste, EMV-verträgliche und normkonforme Auslese-Plattform für digitale Tachographen in 12/24-V-Bordnetzen. Der Aufbau gliedert sich in vier Funktionsblöcke:
+Energiepfad (24 V → 5 V → 3,3 V) mit Eingangs- und Transientenschutz, Schaltregler (MP1584) und lokaler 3,3-V-Versorgung.
+Mikrocontroller-Kern (ESP32-S3-WROOM-1) inkl. Takt/Reset, USB-C-Debug und Status-LED.
+Schnittstellen-Transceiver für RS-232 (MAX3232) und K-Line (L9637D).
+Signalintegrität/EMV: Entstörglieder (Ferritperlen, RC-Netzwerke), ESD-Schutz (z. B. USBLC6-2SC6) und Leiterplatten-Layoutregeln.
+Die folgenden Unterabschnitte beschreiben die Architektur systematisch von der Speisung bis zur Protokollebene.
+\subsection{Schaltungsaufbau und Stromversorgung}
+\section{Hardware-Architektur}\label{sec:hw-arch}
+
+Ziel der Hardware-Architektur ist eine robuste, EMV-verträgliche und normkonforme Auslese-Plattform für digitale Tachographen in 12/24-V-Bordnetzen. Der Aufbau gliedert sich in vier Funktionsblöcke:
+\begin{enumerate}
+  \item Energiepfad (24\,V $\rightarrow$ 5\,V $\rightarrow$ 3{,}3\,V) mit Eingangs- und Transientenschutz,
+  \item Mikrocontroller-Kern (ESP32-S3-WROOM-1) inkl. Takt/Reset, USB-C-Debug und Statusanzeigen,
+  \item Schnittstellen-Transceiver für RS-232 (MAX3232) und K-Line (L9637D),
+  \item Maßnahmen zur Signalintegrität/EMV (Ferritperlen, Snubber, ESD-Arrays, Layoutregeln).
+\end{enumerate}
+
+\subsection{Schaltungsaufbau und Stromversorgung}\label{subsec:power}
+
+\subsubsection*{(A) Bordnetzeingang und Schutzstufen}
+Das Gerät wird direkt aus dem Fahrzeugbordnetz (nominal 24\,V, kompatibel zu 12\,V) gespeist. Der Energiepfad ist mehrstufig aufgebaut:
+
+\paragraph{Primärschutz und Inrush-Begrenzung.}
+Eine Gerätesicherung \textbf{F1} (z.\,B. 5\,A träge) schützt gegen Kurzschlüsse. Eine bidirektionale TVS-Diode \textbf{D3} (Automotive-Serie, SMA/SMBJ) klemmt transiente Überspannungen gemäß ISO~7637-2/ISO~16750-2 (Pulse~1/2/3a/3b, Load-Dump). Ein P-Kanal-MOSFET-Hochseiten-Schalter \textbf{Q2} in Ideal-Dioden-Topologie realisiert Verpolschutz bei minimalem Spannungsabfall und wirkt zugleich als sanfter Einschaltpfad (begrenzter \emph{inrush}).
+
+Eine Ferritperle \textbf{FB1} (600\,\(\Omega\) @ 100\,MHz) in Kombination mit einem $\pi$-ähnlichen Vorfilter (Eingangs-MLCC $\rightarrow$ Ferrit $\rightarrow$ Stützkondensator) unterdrückt leitungsgebundene HF-Störungen in beide Richtungen.
+
+\paragraph{Abwärtswandlung 24\,V $\rightarrow$ 5\,V (MP1584).}
+Der Step-Down-Regler \textbf{MP1584} (U4) arbeitet strommodengeregelt mit externer Taktvorgabe (100\,kHz\,…\,1{,}5\,MHz) und liefert bis 3\,A. Der zulässige Eingangsspannungsbereich (4{,}5\,…\,28\,V), Soft-Start, Überstrom- und thermischer Schutz sind für den Automotive-Einsatz geeignet.
+
+\medskip\noindent
+\textit{Dimensionierung (lehrbuchartig hergeleitet):}\\
+Zielgrößen: \(V_{\mathrm{OUT}}=5{,}0\,\mathrm{V}\), \(I_{\mathrm{OUT,max}}=1{,}0\,\mathrm{A}\), \(f_{\mathrm{S}}=500\,\mathrm{kHz}\) (Kompromiss aus Wirkungsgrad/EMV), \(V_{\mathrm{IN}}=12\,\dots\,28\,\mathrm{V}\).
+
+\begin{itemize}
+  \item Idealer Duty-Cycle:
+  \[
+    D \approx \frac{V_{\mathrm{OUT}}}{V_{\mathrm{IN}}}.
+  \]
+  \item Induktorstrom-Rippel:
+  \[
+    \Delta I_L = \frac{(V_{\mathrm{IN}}-V_{\mathrm{OUT}})\,D}{L\,f_{\mathrm{S}}}
+               = \frac{V_{\mathrm{OUT}}\!\left(1-\frac{V_{\mathrm{OUT}}}{V_{\mathrm{IN}}}\right)}{L\,f_{\mathrm{S}}}.
+  \]
+  Das Maximum tritt bei hohem \(V_{\mathrm{IN}}\) auf.
+  \item Auslegung mit \(30\)–\(40\,\%\) Rippel (Faustregel): Ziel \(\Delta I_L \approx 0{,}3\,\mathrm{A}\) bei \(I_{\mathrm{OUT,max}}=1\,\mathrm{A}\).
+\end{itemize}
+
+\noindent
+Einsetzen für den \emph{worst case} \(V_{\mathrm{IN}}=28\,\mathrm{V}\):
+\[
+  L \approx \frac{V_{\mathrm{OUT}}\!\left(1-\frac{V_{\mathrm{OUT}}}{V_{\mathrm{IN}}}\right)}{\Delta I_L\,f_{\mathrm{S}}}
+    = \frac{5\,(1-\tfrac{5}{28})}{0{,}30\cdot 5\cdot 10^5}
+    \approx 27\,\mu\mathrm{H}.
+\]
+Gewählt wird ein \textbf{22\,…\,33\,$\mu$H} Automotive-Induktor (\(I_{\mathrm{SAT}}\ge I_{\mathrm{OUT,max}}+\tfrac{\Delta I_L}{2}\approx1{,}2\,\mathrm{A}\); thermische Reserve \(\ge 2\,\mathrm{A}\)).
+
+\medskip
+\noindent
+\textit{Freilaufpfad.} Der MP1584 ist nicht synchron; eine externe Schottky-Diode (mind.\,40\,V/3\,A, kleines \(t_{rr}\)) von \(\mathrm{SW}\) nach GND ist vorzusehen.
+
+\medskip
+\noindent
+\textit{Ausgangskapazität.} Überschlägig (kapazitiv dominiertes Ripple)
+\[
+  C_{\mathrm{OUT}} \gtrsim \frac{\Delta I_L}{8\,f_{\mathrm{S}}\,\Delta V_{\mathrm{OUT}}}.
+\]
+Bei \(\Delta I_L\approx 0{,}37\,\mathrm{A}\) (z.\,B. \(L=22\,\mu\mathrm{H}\)) und \(\Delta V_{\mathrm{OUT}}=50\,\mathrm{mV}\) ergibt sich rechnerisch \(C_{\mathrm{OUT}}\approx 1{,}9\,\mu\mathrm{F}\).
+In der Praxis (Lastsprünge, DC-Bias-Derating von MLCC) werden \textbf{2–3\,$\times$\,22\,$\mu$F X7R} nahe am Regler platziert; ggf. mit ESR-Dämpfung (kleiner Serien-R/C bzw. mehrere MLCC parallel).
+
+\medskip
+\noindent
+\textit{Feedback-Teiler.}
+\[
+  V_{\mathrm{OUT}}=V_{\mathrm{REF}}\!\left(1+\frac{R_{\mathrm{HIGH}}}{R_{\mathrm{LOW}}}\right),\qquad V_{\mathrm{REF}}\approx 0{,}8\,\mathrm{V}.
+\]
+Für \(5\,\mathrm{V}\) z.\,B. \(R_{\mathrm{LOW}}=10\,\mathrm{k}\Omega\), \(R_{\mathrm{HIGH}}\approx 52\,\mathrm{k}\Omega\) (E96: 52{,}3\,k\(\Omega\)). Der Abgriff erhält die Kompensationsnetzwerke; Leitungsführung kurz und fern vom SW-Knoten.
+
+\medskip
+\noindent
+\textit{Wirkungsgrad und Verlustleistung.}
+Bei \(I_{\mathrm{OUT}}=0{,}5\,\mathrm{A}\) und \(\eta\approx 88\,\%\) gilt
+\[
+  P_{\mathrm{LOSS}} = P_{\mathrm{OUT}}\!\left(\frac{1}{\eta}-1\right)
+  \approx 2{,}5\,\mathrm{W}\cdot 0{,}136 \approx 0{,}34\,\mathrm{W}.
+\]
+Mit \(\theta_{\mathrm{JA}}\sim 50\,\mathrm{K/W}\) ergibt sich eine moderate Erwärmung (ca. 17\,K über Umgebung).
+
+\paragraph{Sekundärversorgung 5\,V $\rightarrow$ 3{,}3\,V.}
+Der ESP32-S3-WROOM-1 wird mit 3{,}3\,V betrieben (lokal je Versorgungspin 0{,}1\,\(\mu\)F, ergänzt um 10\,\(\mu\)F Bulk pro Subsystem). Sende-Peaks des WLAN/BT-Blocks (200–300\,mA) werden durch eng platzierte Puffer-MLCC abgefangen.
+
+\paragraph{Leistungsbudget (\emph{worst case}).}
+ESP32 aktiv (WLAN-TX-Peaks) \(\approx 240\,\mathrm{mA}\); Schnittstellen/ESD/LEDs \(30\,\dots\,60\,\mathrm{mA}\); Reserve/K-Line-Lastfälle \(100\,\dots\,200\,\mathrm{mA}\) \(\Rightarrow\) gesamt \(\approx 0{,}5\,\dots\,0{,}7\,\mathrm{A}\) @ 5\,V.
+Der MP1584 (3\,A) bietet komfortable Reserve.
+
+\subsubsection*{(B) Masse- und EMV-Konzept}
+\begin{itemize}
+  \item \textbf{Sternförmige Masseführung:} Rückströme der Leistungsstufe (SW-Loop MP1584, Schottky, \(L\), \(C_{\mathrm{OUT}}\)) verbleiben in einem kompakten „Power-Island“. Digitale Masse (ESP32, Transceiver) koppelt erst am \emph{einzigen} Massestern nahe \(C_{\mathrm{OUT}}\).
+  \item \textbf{Kleiner SW-Knoten:} kurze, breite Leiterbahnen; Abschirmung gegenüber sensiblen Netzen; Kupfer-Keep-Out unter dem Antennenbereich des ESP32-Moduls.
+  \item \textbf{Eingangsfilter/ESD:} (FB1 + \(C\)) direkt am Geräteeingang; ESD-Arrays unmittelbar an Steckverbindern (z.\,B. USBLC6-2SC6 an D+/D−).
+  \item \textbf{Trennung „schmutzig/sauber“:} K-Line/RS-232 führen Störungen ein; deren Transceiver peripher platzieren, Logikseite nah am ESP32; falls nötig, Serien-RC bzw. Snubber zur Flankenberuhigung.
+\end{itemize}
+
+\subsection{Schnittstellen- und Pegelkonzepte}\label{subsec:interfaces}
+
+\subsubsection*{(A) RS-232 (V.28) über MAX3232}
+Der \textbf{MAX3232} (U2) bildet die Pegelwandlung zwischen 3{,}3-V-TTL des ESP32 und \(\pm(5\,\dots\,12)\,\mathrm{V}\) nach RS-232. Das IC enthält zwei Treiber und zwei Empfänger inkl.\ Dual-Charge-Pump (vier \(\times\) 100\,nF nahe an den Pins). Datenraten bis 250\,kbit/s sind spezifiziert; ESD-Robustheit bis \(\pm 15\,\mathrm{kV}\) (HBM).
+
+\textit{Topologie \& Leitungsführung:}
+\begin{itemize}
+  \item ESP32\,UART\(_x\).TX $\rightarrow$ T1IN; T1OUT $\rightarrow$ DB9-TX,
+  \item DB9-RX $\rightarrow$ R1IN; R1OUT $\rightarrow$ ESP32\,UART\(_x\).RX,
+  \item optional RTS/CTS über T2/R2.
+\end{itemize}
+Schirm/GND des DB9 wird am Gehäuse aufgelegt; vor dem MAX3232 wird ein ESD-Array platziert. PCB-Leitungen auf der TTL-Seite möglichst kurz führen; die RS-232-Seite darf kabelgebunden länger sein.
+
+\subsubsection*{(B) K-Line (ISO 9141/14230) über L9637D}
+Der \textbf{L9637D} (U1) ist ein Automotive-Transceiver für die halbduplexe K-Line. Versorgung bis 36\,V, integrierter Übertemperatur-, Überstrom- und Unterspannungsschutz.
+
+\textit{Schaltungsprinzip:}
+\begin{itemize}
+  \item K-Pin des L9637D führt zur Fahrzeug-K-Leitung; typischer Pull-Up 510\,\(\Omega\) auf Bordnetz (12/24\,V).
+  \item TX/RX sind TTL-kompatibel \(\Rightarrow\) direkte Anbindung an den ESP32 (3{,}3\,V). INH/EN erlaubt Transceiver-Shutdown.
+  \item Pegel/Timing: Ruhespannung \(K \approx V_{\mathrm{Bord}}\), „dominant“\,=\,Low (auf GND gezogen), baudtypisch \(10{,}4\,\mathrm{kBd}\); \emph{Fast-Init} (25\,ms-Low) und \emph{5-Baud-Init} werden firmwareseitig erzeugt.
+  \item Schutz/EMV: Serienwiderstand (ca.\ 100\,\(\Omega\)) direkt am K-Pin gegen Überschwinger; TVS an K gegen ESD/ISO-Pulsereignisse; sternförmige Masseeinbindung.
+\end{itemize}
+
+\subsubsection*{(C) USB-C-Geräteschnittstelle (Debug/Versorgung)}
+Der USB-C-Stecker (U5) ist \emph{Device-seitig} beschaltet (2\(\times\)\,5{,}1\,k\(\Omega\) an CC1/CC2). Ein ESD-Array (USBLC6-2SC6) schützt D+/D−. Die differentielle Impedanz von 90\,\(\Omega\) ist im Layout einzuhalten (symmetrische Führung, keine scharfen Knicke). Die USB-5\,V wird nicht direkt ins Bordnetz zurückgespeist, sondern über die interne 5-V-Schiene mit ideal-diode/Schalter entkoppelt.

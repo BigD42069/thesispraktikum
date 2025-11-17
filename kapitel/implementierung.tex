@@ -1,0 +1,125 @@
+\chapter{Implementierung}
+
+\section{Hardwareaufbau und Prototyping}
+Dieses Kapitel dokumentiert den Übergang vom Schaltbild zur erprobten Hardware – inklusive Layoutprinzipien, Fertigung, Inbetriebnahme-Checkliste und Messmethodik.
+
+\subsection{Leiterplatten-Design (EMV- und fertigungsorientiert)}
+\paragraph{Lagenaufbau.}
+Zweilagige Leiterplatte (2-Lagen), 1\,oz Cu. \emph{Top:} Leistungs- und HF-kritische Knoten
+(MP1584-Power-Loop, SW-Knoten, USB-Differenzpaar).
+\emph{Bottom:} großflächige GND-Plane mit möglichst wenigen Unterbrechungen und kontrollierten Rückstrompfaden.
+
+\paragraph{Power-Island.}
+Eingang (TVS, Q2, FB1) $\rightarrow$ MP1584 $\rightarrow$ L/Diode/$C_\text{OUT}$ in einem kompakten Rechteck anordnen.
+\emph{Ziel:} minimale Schleifenfläche der kritischen Stromschleife
+\[
+\text{VIN} \rightarrow \text{SW} \rightarrow \text{D} \rightarrow \text{GND} \rightarrow C_\text{OUT} \rightarrow \text{VIN}.
+\]
+
+\paragraph{Signaltrennung.}
+Schnittstellen-Transceiver (RS-232, K-Line) nahe den jeweiligen Steckverbindern platzieren.
+Die Logikseite (3{,}3\,V) erhält an RX/TX kurze Leiterbahnen und Serienwiderstände (22–68\,\(\Omega\)) zur Dämpfung von Überschwingern (Ringing).
+
+\paragraph{ESP32-Antenne.}
+Kupfer-\emph{Keep-Out} unter dem Antennenbereich des ESP32-Moduls sowie \(\approx\)15\,mm Freiraum seitlich vor der Modulantenne (Randmontage bevorzugen).
+
+\paragraph{USB-Datenführung.}
+Differenzpaarführung mit Zielimpedanz \(Z_\text{diff}=90\,\Omega\); Längen- und Skew-Differenz $<\,$150\,mil.
+Keine Stichleitungen/T-Abgriffe; ESD-Arrays unmittelbar an der Buchse platzieren.
+
+\paragraph{Entkopplung.}
+Pro IC-VDD ein 0{,}1\,\(\mu\)F-Kondensator (X7R, 0402/0603) mit $<\,$2\,mm Leiterlänge zum Pin;
+pro Subsystem 10–22\,\(\mu\)F Bulk (X7R) zur Lastsprungpufferung.
+
+\paragraph{Masseführung.}
+Single-Point-Connection zwischen Leistungs- und Digitalmasse (Massestern nahe $C_\text{OUT}$).
+Thermische Anbindung des MP1584 über Vias-in-Pad (SOIC-8EP) zur Wärmeabfuhr.
+
+\paragraph{Mechanik.}
+Alle I/O-Steckverbinder entlang einer Platinenkante vorsehen; Befestigungsbohrungen in der Nähe massiver Bauteile (Induktivität, Steckverbinder), um mechanische Belastungen zu minimieren.
+
+\subsection{Stückliste (BOM) – Kernkomponenten}
+\begin{itemize}
+  \item \textbf{U4 MP1584} (3\,A Step-Down) + L 22–33\,\(\mu\)H, Schottky $\ge$ 3\,A/40\,V, $C_\text{IN}\ge 10\,\mu$F, $C_\text{OUT}\ge 2\times 22\,\mu$F.
+  \item \textbf{U1 L9637D} (ISO-9141 K-Line-Transceiver) + TVS an K, $R_\text{PU}\approx 510\,\Omega$ nach $V_\text{BAT}$.
+  \item \textbf{U2 MAX3232} (RS-232-Pegelwandler) + 4\,$\times$\,100\,nF Charge-Pump-Kondensatoren.
+  \item \textbf{ESP32-S3-WROOM-1} + 3{,}3-V-Versorgung/Entkopplung (0{,}1\,\(\mu\)F je VDD, 10–22\,\(\mu\)F Bulk).
+  \item \textbf{U3 USBLC6-2SC6} (USB-ESD-Schutz), \textbf{FB1} 600\,\(\Omega\)@100\,MHz, \textbf{Q2} P-MOSFET (Reverse-Polarity/Ideal-Diode), \textbf{D3} TVS (Load-Dump).
+\end{itemize}
+
+\subsection{Prototypenfertigung und Bestückung}
+\paragraph{Fertigung.}
+Standard-FR4, min. Leiterbahnbreite/-abstand 6/6\,mil (oder konservativer).
+Lötstopp dunkel (bessere optische Kontrolle), Oberflächenfinish HAL/ENIG nach Verfügbarkeit.
+
+\paragraph{Bestückungsreihenfolge.}
+(1) kleinste/kritische Bauteile (ESD-Arrays, 0402-MLCC), (2) Leistungsstufe (MP1584, Induktivität, Diode, Bulk-Caps),
+(3) Steckverbinder und Mechanik.
+
+\paragraph{Vorinspektion.}
+Optische Kontrolle (Lunker, Lotbrücken, Abstand am SW-Knoten), DMM-Messung auf Kurzschluss
+zwischen 5\,V/GND und 3{,}3\,V/GND.
+
+\subsection{Inbetriebnahme-Checkliste (Bring-Up)}
+\paragraph{Netzteil-Vortest (ohne \(\mu\)C).}
+\begin{enumerate}
+  \item Speisen mit einstellbarem Labor-NT (Strombegrenzung 100\,mA).
+  \item EN-Pin des MP1584 auf Low $\Rightarrow$ Ruhestrom prüfen.
+  \item EN aktivieren: 5{,}0\,V verifizieren; Ripple mit Oszilloskop (20\,MHz-Bandbreite, \emph{ground spring}) messen, Ziel \(V_{pp}<30\text{–}50\,\mathrm{mV}\).
+  \item Laststaffelung 0{,}1\,A $\rightarrow$ 0{,}5\,A $\rightarrow$ 1{,}0\,A; Temperatur von MP1584/Induktor beobachten ($<70^\circ$C).
+\end{enumerate}
+
+\paragraph{3{,}3-V-Ebene \& ESP32.}
+\begin{enumerate}
+  \item 3{,}3\,V messen; Reset-Schaltung prüfen.
+  \item Minimal-Firmware flashen (UART/USB-CDC \emph{alive}, LED-Blinktest).
+  \item WLAN-Peakstrom gezielt provozieren (z.\,B. Ping-Traffic); Transienten auf dem 3{,}3-V-Rail beobachten.
+\end{enumerate}
+
+\paragraph{RS-232-Strecke (MAX3232).}
+\begin{enumerate}
+  \item Loopback (T1OUT\,$\leftrightarrow$\,R1IN) setzen; mit 115200\,Bd testen.
+  \item Externer PC-Adapter: Byte-Fehlerquote \(\approx 0\); korrekte Invertierung prüfen.
+\end{enumerate}
+
+\paragraph{K-Line (L9637D).}
+\begin{enumerate}
+  \item Dummy-Last an K (1\,k\(\Omega\) nach $V_\text{BAT}$), Idle-Level \(\approx V_\text{Bord}\) prüfen.
+  \item \emph{Fast-Init} (25\,ms Low) erzeugen; Flanken (\(\sim 2\,\mu\)s) und Pegel oszilloskopisch verifizieren.
+  \item Störfestigkeit: Puls-Injection (z.\,B. 1\,\(\mu\)s Burst) $\Rightarrow$ keine Fehltrigger am RX.
+\end{enumerate}
+
+\paragraph{USB-C.}
+\begin{enumerate}
+  \item Enumeration am PC; D+/D−-Signalform (90\,\(\Omega\) diff.) kontrollieren.
+  \item ESD-Schnelltest (\(\pm 8\) kV Kontakt) am USB-Shield – keine Resets (nur mit geeigneter Ausrüstung/Laborfreigabe).
+\end{enumerate}
+
+\subsection{Messmethodik und Bewertung}
+\paragraph{Versorgungsripple.}
+Messspitze mit \emph{spring ground}, 20\,MHz-Bandlimit; Messpunkt direkt an $C_\text{OUT}$.
+Dokumentation von \(V_{pp}\) und ggf.\ Spektrum (FFT).
+
+\paragraph{Regelkreis-Stabilität.}
+Lastsprünge 0{,}1\,$\rightarrow$\,0{,}5\,A; Überschwingen und Abklingzeit beobachten
+(Ziel: \(\,t_\text{settle}<200\,\mu\mathrm{s}\) auf \(\pm 2\,\%\)).
+
+\paragraph{Schnittstellensignale.}
+UART-Augendiagramm (RS-232 nach MAX3232), K-Line-Pegel relativ zu $V_\text{BAT}$; Bitzeiten prüfen
+(10{,}4\,kBd $\Rightarrow$ 96\,\(\mu\)s/Bit).
+
+\paragraph{Thermik.}
+IR-Kamera oder Thermoelement; \emph{steady state} nach 10\,min bei 0{,}5\,A Last dokumentieren.
+
+\paragraph{EMV-Vorkompatibilität.}
+Nahfeldsonde über dem SW-Knoten; Oberwellen bei \(f_S\) und \(n\cdot f_S\) bewerten; falls erforderlich Snubber ergänzen (R–C 5–22\,\(\Omega\) / 330–680\,pF).
+
+\subsection{Normbezug und Konformitätsaspekte}
+\paragraph{Schnittstellen.}
+ISO 9141/14230 (K-Line), RS-232 (TIA/EIA-232-F).
+
+\paragraph{Automotive-Elektrik/EMV.}
+ISO 7637-2 / ISO 16750-2 (Transiente), ISO 10605 (ESD), CISPR 25 (Störaussendung) wurden im Design berücksichtigt (TVS, Filter, Layoutführung).
+
+\paragraph{Projektkontext.}
+Die Architekturauswahl und der Prototypenaufbau sind konsistent zu den in Kapitel~3 formulierten Anforderungen und den in Kapitel~2 beschriebenen Komponenten.

@@ -1,0 +1,213 @@
+\documentclass{fiwthesis}
+
+% ========
+%  Pakete
+% ========
+
+
+
+\usepackage{textgreek}           % griechische Buchstaben außerhalb des Math-Mode
+\usepackage{amsmath}             % zentrierte Formeln
+\usepackage{amssymb}             % erweiterter Formelsatz mathem. Symbole
+
+\usepackage{boldline}            % breitere Linien in Tabellen
+\usepackage{booktabs}            % typographisch richtige Tabellen setzen
+\usepackage{tabularx}            % Erweiterte Tabellendarstellung
+\usepackage{multirow}            % Spalte über mehrere Zeilen oder Spalten ausdehnen
+\usepackage{xltabular}           % Zeilenumbrüche in tabularx erlauben
+
+\usepackage{graphicx}            % ermöglicht das Einbinden von Grafiken
+\usepackage{subcaption}          % mehrere Bilder in einem Bild
+\usepackage{pgfplots}            % Grafiken erzeugen
+\usepackage{smartdiagram}        % schnelle und einfache Grafiken
+\usetikzlibrary{positioning}     % bessere Ortsbezeichnung
+\usetikzlibrary{shapes}          % typische Formen wie Rechtecke, Ellipsen usw. einfach zeichnen
+\usetikzlibrary{intersections}   % Schnittpunkt von Geraden adressieren
+\usetikzlibrary{angles, quotes}  % einfacheres Zeichnen von Winkeln
+\usetikzlibrary{                 % Symbole für Schaltpläne
+  circuits.logic.US,
+  circuits.logic.IEC,
+  circuits.logic.CDH,
+  circuits.ee.IEC
+}
+
+\usepackage{lipsum}
+
+% ===========
+%  Metadaten
+% ===========
+
+\thesis{Praktikum}
+\title{Entwicklung eines mobilen Auslesegeräts für digitale Tachographen gemäß EU-Verordnung}
+\author{Denis Schmidt}
+\matrnr{401227}
+\bdate{27.12.2001}
+\bcity{Lübeck}
+\supervisor{Prof.~Dr.~Olaf Hagendorf}
+\secsupervisor{Sem Ion}
+\keywords{Elektroteechnik, Informatik}
+
+% Metadaten in die PDF-Datei schreiben
+\makepdfmetadata
+
+% ===============
+%  Präambel
+% ===============
+
+% PGF Kompatibilitätseinstellung
+\pgfplotsset{width=0.95\textwidth,compat=newest}
+
+% % Bibliographie einbinden
+\bibliography{quellen}
+
+% Glossar einbinden
+\input{verzeichnisse/glossar}
+
+% Abkürzungen einbinden
+\input{verzeichnisse/abkuerzungen}
+
+% Symbole einbinden
+\input{verzeichnisse/symbole}
+
+% Glossar- und Abkürzungsverzeichniserstellung
+\makeglossaries{}
+
+% Index erzeugen
+\makeindex[
+  intoc=true,
+  title=Index,
+  columns=2]{}
+\indexsetup{headers={\indexname}{\indexname}}
+
+% ===============
+%  Eigene Makros
+% ===============
+
+\newcommand*{\code}[1]{\texttt{#1}}
+
+% ===============
+%  Beginn Thesis
+% ===============
+
+\begin{document}
+
+% ============
+%  "Vorspann"
+% ============
+
+% Titelseite
+\maketitle
+
+% Aufgabenstellung
+\maketask{\input{kapitel/aufgabenstellung}}
+
+% Abstract
+\makeabstract{
+Diese Arbeit beschreibt die Entwicklung eines universellen Auslesegeräts für digitale Tachographen, das RS-232- und K-Line-Schnittstellen nach ISO 9141/14230 unterstützt. Ziel ist ein robustes, Automotive-taugliches System zur sicheren und zuverlässigen Datenerfassung. Die Hardware basiert auf einem ESP32-S3-Mikrocontroller, gespeist aus dem 24 V-Bordnetz über einen MP1584-Abwärtswandler und lokale 3,3 V-Regler. Schutzmechanismen wie TVS-Dioden, Ferritfilter und MOSFET-Verpolschutz erhöhen die Störfestigkeit gegenüber Transienten und elektromagnetischen Einflüssen.
+Der Prototyp wurde als zweilagige Leiterplatte mit EMV-optimiertem Layout gefertigt und erfolgreich in Bezug auf Ripple, Signalqualität, thermisches Verhalten und EMV-Vorkompatibilität validiert. Auf Softwareseite implementiert eine modulare Firmware die Tachographenprotokolle und bietet sichere Kommunikation über TLS-Verschlüsselung und Token-Authentifizierung.
+Eine plattformübergreifende Anwendung (Android, iOS, Linux, macOS, Web, Windows) ergänzt die Hardware und ermöglicht eine intuitive Bedienung. Das System erfüllt Anforderungen an Zuverlässigkeit, Sicherheit und Interoperabilität und schafft eine Grundlage für Erweiterungen wie Cloud-Integration und OTA-Updates.
+}{
+This thesis presents the design of a universal tachograph reader supporting RS-232 and K-Line (ISO 9141/14230) interfaces. The goal is a robust, automotive-grade platform for reliable and secure data acquisition. The system is powered by a 24 V supply via an MP1584 buck converter and local 3.3 V regulation, with protection circuitry including TVS diodes, ferrite filters, and a MOSFET-based reverse polarity guard for resilience against automotive transients and EMI.
+The prototype was built on a two-layer PCB with EMI-conscious layout and validated through ripple, signal integrity, thermal, and pre-compliance EMI testing. A modular firmware stack supports tachograph communication and secure TLS- and token-based transmission.
+A cross-platform software suite (Android, iOS, Linux, macOS, Web, Windows) provides intuitive control and integration. The solution meets key requirements for reliability, security, and interoperability, offering a strong foundation for future features such as cloud services and OTA updates.
+}
+
+% Inhaltsverzeichnis (Schalter `compact' sorgt für einfachen Zeilenabstand)
+\maketoc[compact]
+
+% ==========
+%  Textteil
+% ==========
+
+% Einleitung
+\input{kapitel/einleitung}
+
+\input{kapitel/Grundagen}
+
+\input{kapitel/anforderungsanalyse}
+
+\input{kapitel/systementwurf}
+
+\input{kapitel/implementierung}
+\input{kapitel/diskussion}
+\input{kapitel/fazit}
+
+
+% weitere Kapitel hier jeweils einzeln einbinden
+%\input{kapitel/beispiel}
+
+% Schluss
+\input{kapitel/schluss}
+
+% =========
+%  Anlagen
+% =========
+
+\begin{appendices}
+
+  \input{anlagen/beispiel}
+
+\end{appendices}
+
+% ===============
+%  Verzeichnisse
+% ===============
+
+% Verzeichnisse mit einzeiligem Zeilenabstand
+\singlespacing
+
+% Literaturverzeichnis
+\listofreferences
+
+% Abbildungsverzeichnis einfügen
+\listoffigures
+
+% Tabellenverzeichnis einfügen
+\listoftables
+
+% Algorithmenverzeichnis einfügen
+\listofalgorithms
+
+% % Quelltextverzeichnis einfügen
+\listoflistings
+
+% Abkürzungsverzeichnis
+\listofacronyms
+
+% Symbolverzeichnis
+\listofsymbols
+
+% falls ein anderer Glossar-Stil genutzt wird und die zweite Spalte zu schmal ist:
+% \setlength{\glsdescwidth}{0.8\linewidth}
+
+% Glossar einfügen
+\printglossary
+
+% Index einfügen
+\printindex
+
+% wieder auf 1½-fachen Zeilenabstand umschalten
+\normalspacing
+
+% =========================================
+%  Selbstständigkeitserklärung, CD, Thesen
+% =========================================
+
+% Selbstständigkeitserklärung
+\makedeclarationofindependence
+
+% Inhalt der CD; nur für gedruckte Version wichtig
+\makecd{\input{anlagen/cd}}
+
+% Thesen (allerletzte Seite); Thesen bitte immer durch Semikolons trennen
+\maketheses{%
+  These 1;
+  These 2;
+  \ldots
+}
+
+\end{document}
+
+% =============
+%  Ende Thesis
+% =============

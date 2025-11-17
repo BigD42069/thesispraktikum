@@ -1,0 +1,38 @@
+\chapter{Analyse der Anforderungen}
+Um eine funktionale, sichere und wirtschaftlich sinnvolle Lösung zu entwickeln, ist vorab eine strukturierte Analyse der projektbezogenen Anforderungen notwendig. Diese lassen sich in funktionale, nicht-funktionale, technische sowie sicherheitsrelevante Anforderungen gliedern. Darüber hinaus wird ein kurzer Vergleich zu bestehenden Lösungen vorgenommen, um die Positionierung des geplanten Systems klar abzugrenzen.
+\section{Funktionale Anforderungen}
+Die zentralen Funktionen des zu entwickelnden Auslesegeräts ergeben sich direkt aus den gesetzlichen Vorgaben sowie aus den praktischen Anforderungen von Transportunternehmen. Im Einzelnen ergeben sich folgende funktionale Anforderungen:
+	•	Auslesen von Tachographendaten gemäß den EU-Verordnungen 2016/799 und 2021/1228
+	•	Unterstützung der seriellen Kommunikationsprotokolle des Tachographen (UART, K-Line)
+	•	Sichere Authentifizierung über Unternehmenskarte oder vorab registrierte Geräteidentitäten
+	•	Datenverschlüsselung während der Übertragung und ggf. Speicherung
+	•	Bereitstellung der Daten zur Anzeige, Archivierung oder Export
+	•	Plattformunabhängiger Datenzugriff, z. B. über Webanwendung oder mobile App
+	•	Energieeffizienter, mobiler Betrieb ohne stationäre Infrastruktur
+Diese Funktionen bilden den sogenannten „Minimal Viable Product“-Kern des Systems und müssen prioritär umgesetzt werden.
+\section{Nicht-funktionale Anforderungen (Mobilität, Benutzerfreundlichkeit, Kosten)}
+Nicht-funktionale Anforderungen betreffen qualitative Merkmale des Systems, die nicht direkt durch eine einzelne technische Funktion abgedeckt sind, aber für die Akzeptanz und den praktischen Einsatz entscheidend sind:
+	•	Mobilität: Kompakte Baugröße, Batteriebetrieb möglich
+	•	Benutzerfreundlichkeit: Einfache Bedienung auch für technisch nicht geschulte Anwender
+	•	Robustheit: Geeignet für den Außeneinsatz im Fahrzeugumfeld
+	•	Kosteneffizienz: Komponentenwahl abgestimmt auf niedrige Materialkosten
+	•	Modularität: Erweiterbarkeit durch Software oder zusätzliche Schnittstellen
+	•	Zukunftsfähigkeit: Berücksichtigung künftiger Tachograph-Generationen (z. B. Smart Tachographs Version 2)
+\section{Sicherheits- und Datenschutzanforderungen}
+Die Arbeit mit personenbezogenen und unternehmenskritischen Daten erfordert besondere Vorkehrungen im Design:
+	•	Vertraulichkeit: Schutz der ausgelesenen Daten vor unbefugtem Zugriff
+	•	Integrität: Sicherstellung, dass Daten vollständig und unverändert übertragen werden
+	•	Authentifizierung/Autorisierung: Zugriff nur durch berechtigte Nutzer oder Systeme
+	•	Speichersicherheit: Daten sollen entweder temporär im Gerät oder sicher extern (z. B. Cloud) abgelegt werden – Speicherung im Klartext im Gerät ist zu vermeiden
+	•	Datenschutzrechtliche Konformität: Umsetzung gemäß DSGVO und IT-Sicherheitsstandards
+Insbesondere TLS/SSL-Verschlüsselung, tokenbasierte Autorisierung und rollenbezogene Zugriffskontrolle (z. B. Fahrer vs. Unternehmen) werden als technische Mittel berücksichtigt.
+\section{Technische Spezifikationen gemäß Normen}
+Die Kommunikation mit dem digitalen Tachographen muss normenkonform erfolgen. Relevante technische Richtlinien sind u. a.:
+	•	ISO 16844 (Teil 1–6): definiert die physikalischen und Protokoll-Schichten für Tachographenschnittstellen
+	•	ISO 9141-2: Kommunikationsprotokoll für K-Line-Diagnoseschnittstellen
+	•	Continental VDO Datenformate (z. B. DDD/XML-Files): strukturierte Fahrerdatenformate
+	•	EU-Verordnung 2016/799, Anhang 1C: Vorgaben zu Authentifizierungsprozessen, Protokollformaten und Sicherheitsmechanismen
+Die Umsetzung muss kompatibel mit diesen Spezifikationen erfolgen, um rechtssichere Daten zu gewährleisten.
+\section{Vergleich zu bestehenden Lösungen}
+Der Markt für mobile Tachographen-Auslesesysteme ist zwar vorhanden, jedoch meist auf professionelle Großlösungen oder fest verbaute Telematikeinheiten beschränkt. Kritische Einschränkungen der am Markt befindlichen Lösungen:
+\includegraphics[width=0.2\linewidth]{bilder/table.png}
