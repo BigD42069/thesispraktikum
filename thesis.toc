@@ -1,0 +1,91 @@
+\babel@toc {ngerman}{}\relax 
+\contentsline {chapter}{\numberline {1}Einleitung}{6}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivation und Problemstellung}{6}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Zielsetzung des Projekts}{6}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Abgrenzung und Schwerpunkt der Arbeit}{7}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Aufbau der Arbeit}{7}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Grundlagen}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Rechtlicher Rahmen digitaler Tachographen}{9}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}EU-Verordnung 2016/799}{9}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}EU-Verordnung 2021/1228}{9}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Funktionsweise und Datenstrukturen digitaler Tachographen}{9}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Kommunikationsschnittstellen von Tachographen}{10}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}UART}{10}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}K-Line}{12}{subsection.2.3.2}%
+\contentsline {section}{\numberline {2.4}Sicherheitsanforderungen (Authentifizierung, Autorisierung, Verschlüsselung)}{15}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Überblick Mikrocontroller-Plattform ESP32}{15}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Architektur und Leistungsdaten}{15}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Wi-Fi}{15}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Bluetooth low energy}{16}{subsection.2.5.3}%
+\contentsline {section}{\numberline {2.6}Relevante Zusatzkomponenten}{17}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}MAX3232 Pegelwandler}{17}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}L9637D K-Line Transceiver}{17}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}MP1584EN-LF-Z Step-Down Regler}{18}{subsection.2.6.3}%
+\contentsline {chapter}{\numberline {3}Analyse der Anforderungen}{20}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Funktionale Anforderungen}{20}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Nicht-funktionale Anforderungen (Mobilität, Benutzerfreundlichkeit, Kosten)}{20}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Sicherheits- und Datenschutzanforderungen}{21}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Technische Spezifikationen gemäß Normen}{21}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Vergleich zu bestehenden Lösungen}{21}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Systementwurf}{22}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Hardware-Architektur}{22}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Schaltungsaufbau und Stromversorgung}{22}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Hardware-Architektur}{22}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Schaltungsaufbau und Stromversorgung}{23}{subsection.4.2.1}%
+\contentsline {paragraph}{\nonumberline Primärschutz und Inrush-Begrenzung.}{23}{paragraph*.9}%
+\contentsline {paragraph}{\nonumberline Abwärtswandlung 24\,V $\rightarrow $ 5\,V (MP1584).}{23}{paragraph*.11}%
+\contentsline {paragraph}{\nonumberline Sekundärversorgung 5\,V $\rightarrow $ 3{,}3\,V.}{24}{paragraph*.13}%
+\contentsline {paragraph}{\nonumberline Leistungsbudget (\emph {worst case}).}{25}{paragraph*.15}%
+\contentsline {subsection}{\numberline {4.2.2}Schnittstellen- und Pegelkonzepte}{25}{subsection.4.2.2}%
+\contentsline {chapter}{\numberline {5}Implementierung}{27}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Hardwareaufbau und Prototyping}{27}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}THT-Prototypen}{27}{subsection.5.1.1}%
+\contentsline {subsubsection}{\nonumberline Prototyp 1}{27}{subsubsection*.21}%
+\contentsline {subsubsection}{\nonumberline Prototyp 2}{27}{subsubsection*.23}%
+\contentsline {subsection}{\numberline {5.1.2}Leiterplatten-Design (EMV- und fertigungsorientiert)}{28}{subsection.5.1.2}%
+\contentsline {paragraph}{\nonumberline Lagenaufbau.}{28}{paragraph*.25}%
+\contentsline {paragraph}{\nonumberline Power-Island.}{28}{paragraph*.27}%
+\contentsline {paragraph}{\nonumberline Signaltrennung.}{28}{paragraph*.29}%
+\contentsline {paragraph}{\nonumberline ESP32-Antenne.}{28}{paragraph*.31}%
+\contentsline {paragraph}{\nonumberline USB-Datenführung.}{28}{paragraph*.33}%
+\contentsline {paragraph}{\nonumberline Entkopplung.}{28}{paragraph*.35}%
+\contentsline {paragraph}{\nonumberline Masseführung.}{28}{paragraph*.37}%
+\contentsline {paragraph}{\nonumberline Mechanik.}{29}{paragraph*.39}%
+\contentsline {subsection}{\numberline {5.1.3}Stückliste (BOM) – Kernkomponenten}{29}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Prototypenfertigung und Bestückung}{29}{subsection.5.1.4}%
+\contentsline {paragraph}{\nonumberline Fertigung.}{29}{paragraph*.41}%
+\contentsline {paragraph}{\nonumberline Bestückungsreihenfolge.}{29}{paragraph*.43}%
+\contentsline {paragraph}{\nonumberline Vorinspektion.}{29}{paragraph*.45}%
+\contentsline {subsection}{\numberline {5.1.5}Inbetriebnahme-Checkliste (Bring-Up)}{29}{subsection.5.1.5}%
+\contentsline {paragraph}{\nonumberline Netzteil-Vortest (ohne \(\mu \)C).}{29}{paragraph*.47}%
+\contentsline {paragraph}{\nonumberline 3{,}3-V-Ebene \& ESP32.}{30}{paragraph*.49}%
+\contentsline {paragraph}{\nonumberline RS-232-Strecke (MAX3232).}{30}{paragraph*.51}%
+\contentsline {paragraph}{\nonumberline K-Line (L9637D).}{30}{paragraph*.53}%
+\contentsline {paragraph}{\nonumberline USB-C.}{30}{paragraph*.55}%
+\contentsline {subsection}{\numberline {5.1.6}Messmethodik und Bewertung}{30}{subsection.5.1.6}%
+\contentsline {paragraph}{\nonumberline Versorgungsripple.}{30}{paragraph*.57}%
+\contentsline {paragraph}{\nonumberline Regelkreis-Stabilität.}{30}{paragraph*.59}%
+\contentsline {paragraph}{\nonumberline Schnittstellensignale.}{31}{paragraph*.61}%
+\contentsline {paragraph}{\nonumberline Thermik.}{31}{paragraph*.63}%
+\contentsline {paragraph}{\nonumberline EMV-Vorkompatibilität.}{31}{paragraph*.65}%
+\contentsline {subsection}{\numberline {5.1.7}Normbezug und Konformitätsaspekte}{31}{subsection.5.1.7}%
+\contentsline {paragraph}{\nonumberline Schnittstellen.}{31}{paragraph*.67}%
+\contentsline {paragraph}{\nonumberline Automotive-Elektrik/EMV.}{31}{paragraph*.69}%
+\contentsline {paragraph}{\nonumberline Projektkontext.}{31}{paragraph*.71}%
+\contentsline {chapter}{\numberline {6}Diskussion}{32}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Erfüllung der Anforderungen}{32}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Bewertung der Leistungsfähigkeit}{32}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Grenzen des Prototyps}{32}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Wirtschaftlichkeitsbetrachtung}{32}{section.6.4}%
+\contentsline {chapter}{\numberline {7}fazit und ausblick}{33}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Zusammenfassung der Ergebnisse}{33}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Potenzielle Weiterentwicklungen}{33}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Einsatzmöglichkeiten in der Praxis}{33}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{34}{chapter.8}%
+\contentsline {chapter}{Anhang \numberline {A}Beispielanlage}{35}{appendix.1.A}%
+\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{36}{chapter*.72}%
+\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{37}{chapter*.73}%
+\contentsline {chapter}{\nonumberline Algorithmenverzeichnis}{38}{chapter*.74}%
+\contentsline {chapter}{\nonumberline Quellcodeverzeichnis}{39}{chapter*.75}%
+\contentsline {chapter}{Selbstständigkeitserklärung}{40}{chapter*.76}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

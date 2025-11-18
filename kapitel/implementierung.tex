@@ -3,6 +3,12 @@
 \section{Hardwareaufbau und Prototyping}
 Dieses Kapitel dokumentiert den Übergang vom Schaltbild zur erprobten Hardware – inklusive Layoutprinzipien, Fertigung, Inbetriebnahme-Checkliste und Messmethodik.
 
+\subsection{THT-Prototypen}
+Zunächst habe ich vorgefertigte Komponenten ausgewählt und diese auf einer Lochrasterplatine verlötet. Dieses Vorgehen wurde gewählt, da es einerseits einfach umzusetzen war und andererseits schnelle Ergebnisse ermöglichte. Zudem konnten wir auf diese Weise die Funktionalität der einzelnen Bauteile überprüfen, bevor wir mit dem Design der Leiterplatte begonnen haben.
+\subsubsection{Prototyp 1}
+Zu Beginn wurde eine Variante realisiert, bei der sämtliche Bauteile fest verlötet wurden. Es zeigte sich jedoch, dass dieses Vorgehen für die Fehlerdiagnose nicht ideal war. Darüber hinaus wies der Prototyp anfänglich die Eigenschaft auf, dass er nur in Verbindung mit dem Labornetzteil zuverlässig funktionierte. Beim Betrieb am Tachographen startete der ESP nicht ordnungsgemäß, da der Tachograph nicht ausreichend Strom bereitstellte. Er schaltete in einen Sicherheitsmodus und stellte lediglich eine Spannung von weniger als 3 V zur Verfügung.
+\subsubsection{Prototyp 2}
+Der zweite Prototyp zeichnete sich durch einen modularen Aufbau aus, der es ermöglicht, alle Komponenten einfach an- und abzustecken. Dieses Konzept wurde durch den Einsatz von einfachen Jumper-Kabeln sowie weiblichen Dupont-Steckern realisiert. Selbst einzelne LEDs, Widerstände und Kondensatoren sind abnehmbar gestaltet. Mit dieser Variante gelang es uns, eine funktionsfähige Version zu entwickeln, bei der sämtliche Akku-Komponenten zuverlässig arbeiteten.
 \subsection{Leiterplatten-Design (EMV- und fertigungsorientiert)}
 \paragraph{Lagenaufbau.}
 Zweilagige Leiterplatte (2-Lagen), 1\,oz Cu. \emph{Top:} Leistungs- und HF-kritische Knoten
