@@ -2372,6 +2372,42 @@
     <bcf:datasource type="file" datatype="bibtex">quellen.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1" intorder="1">kedso-impressum</bcf:citekey>
+    <bcf:citekey order="1" intorder="2">kedso-home</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">eu-2016-799</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">eu-2016-799</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">eu-2021-1228</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">eu-2021-1228</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">eu-2016-799</bcf:citekey>
+    <bcf:citekey order="6" intorder="2">eu-2021-1228</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">axelson-serial-port-complete</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">iso-9141-2</bcf:citekey>
+    <bcf:citekey order="8" intorder="2">iso-14230-2</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">espressif-esp32</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">bluetooth-core54</bcf:citekey>
+    <bcf:citekey order="10" intorder="2">espressif-esp32</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">ti-max3232</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">st-l9637d</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">mps-mp1584</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">flutter-docs</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">espressif-esp-idf</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">eu-2016-799</bcf:citekey>
+    <bcf:citekey order="16" intorder="2">eu-2021-1228</bcf:citekey>
+    <bcf:citekey order="16" intorder="3">eu-gdpr-2016-679</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">eu-2016-799</bcf:citekey>
+    <bcf:citekey order="25" intorder="2">eu-2021-1228</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">eu-2016-799</bcf:citekey>
+    <bcf:citekey order="26" intorder="2">eu-2021-1228</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">eu-gdpr-2016-679</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">eu-gdpr-2016-679</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">eu-2016-799</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">eu-2021-1228</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">iso-9141-2</bcf:citekey>
+    <bcf:citekey order="31" intorder="2">iso-14230-2</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">infineon-ipd90p03p4l-04</bcf:citekey>
+    <bcf:citekey order="32" intorder="2">vishay-smbj</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">vishay-smbj</bcf:citekey>
+    <bcf:citekey order="33" intorder="2">littelfuse-smaj</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

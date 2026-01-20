@@ -30,6 +30,7 @@
   circuits.logic.CDH,
   circuits.ee.IEC
 }
+\usepackage{float}               % feste Platzierung von Gleitobjekten (H-Option)
 
 \usepackage{lipsum}
 
@@ -37,14 +38,14 @@
 %  Metadaten
 % ===========
 
-\thesis{Praktikum}
+\thesis{Praktikumsarbeit}
 \title{Entwicklung eines mobilen Auslesegeräts für digitale Tachographen gemäß EU-Verordnung}
-\author{Denis Schmidt}
+\author{Dennis Schmidt}
 \matrnr{401227}
 \bdate{27.12.2001}
 \bcity{Lübeck}
 \supervisor{Prof.~Dr.~Olaf Hagendorf}
-\secsupervisor{Sem Ion}
+\secsupervisor{Steffen Lack}
 \keywords{Elektroteechnik, Informatik}
 
 % Metadaten in die PDF-Datei schreiben
@@ -85,6 +86,15 @@
 
 \newcommand*{\code}[1]{\texttt{#1}}
 
+% Nummerierung und Inhaltsverzeichnis bis zur Ebene der Subsubsections aktivieren
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+% Bookmarks ebenfalls nummerieren und bis Subsubsection anlegen
+\hypersetup{
+  bookmarksnumbered=true,
+  bookmarksdepth=3
+}
+
 % ===============
 %  Beginn Thesis
 % ===============
@@ -99,17 +109,17 @@
 \maketitle
 
 % Aufgabenstellung
-\maketask{\input{kapitel/aufgabenstellung}}
+%\input{kapitel/implementierung}
 
 % Abstract
 \makeabstract{
-Diese Arbeit beschreibt die Entwicklung eines universellen Auslesegeräts für digitale Tachographen, das RS-232- und K-Line-Schnittstellen nach ISO 9141/14230 unterstützt. Ziel ist ein robustes, Automotive-taugliches System zur sicheren und zuverlässigen Datenerfassung. Die Hardware basiert auf einem ESP32-S3-Mikrocontroller, gespeist aus dem 24 V-Bordnetz über einen MP1584-Abwärtswandler und lokale 3,3 V-Regler. Schutzmechanismen wie TVS-Dioden, Ferritfilter und MOSFET-Verpolschutz erhöhen die Störfestigkeit gegenüber Transienten und elektromagnetischen Einflüssen.
-Der Prototyp wurde als zweilagige Leiterplatte mit EMV-optimiertem Layout gefertigt und erfolgreich in Bezug auf Ripple, Signalqualität, thermisches Verhalten und EMV-Vorkompatibilität validiert. Auf Softwareseite implementiert eine modulare Firmware die Tachographenprotokolle und bietet sichere Kommunikation über TLS-Verschlüsselung und Token-Authentifizierung.
-Eine plattformübergreifende Anwendung (Android, iOS, Linux, macOS, Web, Windows) ergänzt die Hardware und ermöglicht eine intuitive Bedienung. Das System erfüllt Anforderungen an Zuverlässigkeit, Sicherheit und Interoperabilität und schafft eine Grundlage für Erweiterungen wie Cloud-Integration und OTA-Updates.
+ Diese Arbeit beschreibt die Entwicklung eines universellen Auslesegeräts für digitale Tachographen, das RS-232- und K-Line-Schnittstellen nach ISO 9141/14230 unterstützt. Ziel ist ein robustes, Automotive-taugliches System zur sicheren und zuverlässigen Datenerfassung. Die Hardware basiert auf einem ESP32-S3-Mikrocontroller, gespeist aus dem 24 V-Bordnetz über einen MP1584-Abwärtswandler und lokale 3,3 V-Regler. Schutzmechanismen wie \gls{tvs}-Dioden, Ferritfilter und MOSFET-Verpolschutz erhöhen die Störfestigkeit gegenüber Transienten und elektromagnetischen Einflüssen.
+Der Prototyp wurde als zweilagige Leiterplatte mit \gls{emv}-optimiertem Layout gefertigt und erfolgreich in Bezug auf Ripple, Signalqualität, thermisches Verhalten und \gls{emv}-Vorkompatibilität validiert. Auf Softwareseite implementiert eine modulare Firmware die Tachographenprotokolle und bietet sichere Kommunikation über \gls{tls}-Verschlüsselung und Token-Authentifizierung.
+ Eine plattformübergreifende Anwendung (Android, iOS, Linux, macOS, Web, Windows) ergänzt die Hardware und stellt die ausgelesenen Daten anschaulich dar. Das System erfüllt Anforderungen an Zuverlässigkeit, Sicherheit und Interoperabilität und bildet eine Grundlage für Erweiterungen wie Cloud-Integration und \gls{ota}-Updates.
 }{
-This thesis presents the design of a universal tachograph reader supporting RS-232 and K-Line (ISO 9141/14230) interfaces. The goal is a robust, automotive-grade platform for reliable and secure data acquisition. The system is powered by a 24 V supply via an MP1584 buck converter and local 3.3 V regulation, with protection circuitry including TVS diodes, ferrite filters, and a MOSFET-based reverse polarity guard for resilience against automotive transients and EMI.
-The prototype was built on a two-layer PCB with EMI-conscious layout and validated through ripple, signal integrity, thermal, and pre-compliance EMI testing. A modular firmware stack supports tachograph communication and secure TLS- and token-based transmission.
-A cross-platform software suite (Android, iOS, Linux, macOS, Web, Windows) provides intuitive control and integration. The solution meets key requirements for reliability, security, and interoperability, offering a strong foundation for future features such as cloud services and OTA updates.
+This thesis presents the design of a universal tachograph reader supporting RS-232 and K-Line (ISO 9141/14230) interfaces. The goal is a robust, automotive-grade platform for reliable and secure data acquisition. The system is powered by a 24 V supply via an MP1584 buck converter and local 3.3 V regulation, with protection circuitry including \gls{tvs} diodes, ferrite filters, and a MOSFET-based reverse polarity guard for resilience against automotive transients and EMI.
+The prototype was built on a two-layer PCB with \gls{emv}-conscious layout and validated through ripple, signal integrity, thermal, and pre-compliance \gls{emv} testing. A modular firmware stack supports tachograph communication and secure \gls{tls}- and token-based transmission.
+A cross-platform software suite (Android, iOS, Linux, macOS, Web, Windows) complements the hardware and presents the extracted data. The solution meets key requirements for reliability, security, and interoperability, providing a foundation for future features such as cloud services and \gls{ota} updates.
 }
 
 % Inhaltsverzeichnis (Schalter `compact' sorgt für einfachen Zeilenabstand)
@@ -129,6 +139,9 @@ A cross-platform software suite (Android, iOS, Linux, macOS, Web, Windows) provi
 \input{kapitel/systementwurf}
 
 \input{kapitel/implementierung}
+
+\input{kapitel/application}
+
 \input{kapitel/diskussion}
 \input{kapitel/fazit}
 
@@ -137,15 +150,13 @@ A cross-platform software suite (Android, iOS, Linux, macOS, Web, Windows) provi
 %\input{kapitel/beispiel}
 
 % Schluss
-\input{kapitel/schluss}
+
 
 % =========
 %  Anlagen
 % =========
 
 \begin{appendices}
-
-  \input{anlagen/beispiel}
 
 \end{appendices}
 
@@ -164,12 +175,6 @@ A cross-platform software suite (Android, iOS, Linux, macOS, Web, Windows) provi
 
 % Tabellenverzeichnis einfügen
 \listoftables
-
-% Algorithmenverzeichnis einfügen
-\listofalgorithms
-
-% % Quelltextverzeichnis einfügen
-\listoflistings
 
 % Abkürzungsverzeichnis
 \listofacronyms
@@ -195,16 +200,6 @@ A cross-platform software suite (Android, iOS, Linux, macOS, Web, Windows) provi
 
 % Selbstständigkeitserklärung
 \makedeclarationofindependence
-
-% Inhalt der CD; nur für gedruckte Version wichtig
-\makecd{\input{anlagen/cd}}
-
-% Thesen (allerletzte Seite); Thesen bitte immer durch Semikolons trennen
-\maketheses{%
-  These 1;
-  These 2;
-  \ldots
-}
 
 \end{document}
 

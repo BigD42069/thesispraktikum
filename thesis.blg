@@ -1,9 +1,17 @@
 [0] Config.pm:308> INFO - This is Biber 2.20
 [0] Config.pm:311> INFO - Logfile is 'thesis.blg'
-[24] biber-darwin:340> INFO - === Tue Nov 18, 2025, 16:00:14
+[25] biber-darwin:340> INFO - === Mon Jan 19, 2026, 16:45:06
 [31] Biber.pm:420> INFO - Reading 'thesis.bcf'
-[55] Biber.pm:994> INFO - Found 0 citekeys in bib section 0
-[60] bbl.pm:676> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
-[60] bbl.pm:779> INFO - Output to thesis.bbl
-[60] Biber.pm:131> WARN - The file 'thesis.bcf' does not contain any citations!
-[60] Biber.pm:133> INFO - WARNINGS: 1
+[57] Biber.pm:994> INFO - Found 18 citekeys in bib section 0
+[62] Biber.pm:4463> INFO - Processing section 0
+[66] Biber.pm:4654> INFO - Looking for bibtex file 'quellen.bib' for section 0
+[67] bibtex.pm:1713> INFO - LaTeX decoding ...
+[73] bibtex.pm:1519> INFO - Found BibTeX data source 'quellen.bib'
+[108] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[108] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[108] Biber.pm:4283> INFO - Sorting list 'nyt/global//global/global/global' of type 'entry' with template 'nyt' and locale 'de-DE'
+[108] Biber.pm:4289> INFO - No sort tailoring available for locale 'de-DE'
+[115] bbl.pm:676> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[117] bbl.pm:779> INFO - Output to thesis.bbl
+[117] Biber.pm:131> WARN - Duplicate entry key: 'long' in file 'quellen.bib', skipping ...
+[117] Biber.pm:133> INFO - WARNINGS: 1

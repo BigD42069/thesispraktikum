@@ -1,6 +1,6 @@
-This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.9.1)  18 NOV 2025 16:00
+This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.9.1)  19 JAN 2026 16:45
  restricted system commands enabled.
-**thesis
+**thesis.tex
 (./thesis.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -2044,27 +2044,27 @@ Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
 \l__lipsum_a_int=\count575
 \l__lipsum_b_int=\count576
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
-(./verzeichnisse/glossar.tex
+(./verzeichnisse/glossar.tex) (./verzeichnisse/abkuerzungen.tex)
+(./verzeichnisse/symbole.tex)
 \glswrite=\write6
 \glo@main@file=\write7
 
 \openout7 = thesis.glo
-Package glossaries Info: Writing glossary file thesis.glo on input line 9.
+Package glossaries Info: Writing glossary file thesis.glo on input line 74.
 \glo@acronym@file=\write8
 
 \openout8 = thesis.acn
-Package glossaries Info: Writing glossary file thesis.acn on input line 9.
+Package glossaries Info: Writing glossary file thesis.acn on input line 74.
 \glo@symbolslist@file=\write9
 
 \openout9 = thesis.syg
-Package glossaries Info: Writing glossary file thesis.syg on input line 9.
-) (./verzeichnisse/abkuerzungen.tex)
-(./verzeichnisse/symbole.tex)
+Package glossaries Info: Writing glossary file thesis.syg on input line 74.
 \thesis@idxfile=\write10
 
 \openout10 = thesis.idx
 
 Writing index file thesis.idx
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 96.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
@@ -2072,34 +2072,34 @@ Package csquotes Info: Redefining alias 'default' -> 'ngerman'.
 (./thesis.aux)
 \openout1 = thesis.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 92.
-LaTeX Font Info:    Trying to load font information for LGR+cmr on input line 9
-2.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 102.
+LaTeX Font Info:    Trying to load font information for LGR+cmr on input line 1
+02.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/cbfonts-fd/lgrcmr.fd
 File: lgrcmr.fd 2017/07/29 v1.2 Greek European Computer Regular
 )
-LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    ... okay on input line 102.
 
 (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -2158,7 +2158,7 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package newfloat Info: `float' package detected.
-Package hyperref Info: Link coloring OFF on input line 92.
+Package hyperref Info: Link coloring OFF on input line 102.
 (./thesis.out) (./thesis.out)
 \@outlinefile=\write11
 
@@ -2170,7 +2170,7 @@ Class scrreprt Info: loading recommended package `bookmark'.
 (scrreprt)           `bookmarkpackage=false' before \begin{document} and
 (scrreprt)           you can avoid this message adding:
 (scrreprt)             \usepackage{bookmark}
-(scrreprt)           before \begin{document} on input line 92.
+(scrreprt)           before \begin{document} on input line 102.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
@@ -2180,6 +2180,7 @@ File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO
 )
 \BKM@id=\count583
 ))
+(./thesis.glsdefs)
 Package biblatex Info: Trying to load language 'ngerman'...
 Package biblatex Info: ... file 'ngerman.lbx' found.
 
@@ -2207,21 +2208,21 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'thesis.bbl' found.
 
 (./thesis.bbl)
-Package biblatex Info: Reference section=0 on input line 92.
-Package biblatex Info: Reference segment=0 on input line 92.
+Package biblatex Info: Reference section=0 on input line 102.
+Package biblatex Info: Reference segment=0 on input line 102.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 99.
-
+LaTeX Font Info:    Trying to load font information for U+msa on input line 109
+.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 99.
-
+LaTeX Font Info:    Trying to load font information for U+msb on input line 109
+.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -2234,25 +2235,10 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(./kapitel/aufgabenstellung.tex)
 
-[2]
-Overfull \hbox (12.62062pt too wide) in paragraph at lines 113--113
-\TU/lmr/m/n/12 schen Ein-flüs-sen. Der Pro-to-typ wur-de als zwei-la-gi-ge Lei-
-ter-plat-te mit EMV-optimiertem
- []
+[2] (./thesis.toc
 
-
-
-[3] (./thesis.toc
-Overfull \hbox (8.05547pt too wide) in paragraph at lines 15--15
- [][] [][]\TU/lmr/m/n/12 Si-cher-heits-an-for-de-run-gen (Au-then-ti-fi-zie-rung
-, Au-to-ri-sie-rung, Ver-schlüs- 
- []
-
-
-
-[4
+[3
 
 ])
 \tf@toc=\write12
@@ -2260,311 +2246,332 @@ Overfull \hbox (8.05547pt too wide) in paragraph at lines 15--15
 \openout12 = thesis.toc
  (./kapitel/einleitung.tex
 
-[5]
+[4]
 chapter 1.
+) (./kapitel/Grundagen.tex
+
+[5
+
+]
+chapter 2.
 
 
 [6
 
 ]
+<bilder/tachograph.png, id=229, 1217.54875pt x 206.7725pt>
+File: bilder/tachograph.png Graphic file (type png)
+<use bilder/tachograph.png>
+Package luatex.def Info: bilder/tachograph.png  used on input line 19.
+(luatex.def)             Requested size: 426.79141pt x 72.47873pt.
 
-[7]) (./kapitel/Grundagen.tex
-
-[8]
-chapter 2.
-
-
-[9
-
-]
-Overfull \hbox (1.44878pt too wide) in paragraph at lines 17--18
+Overfull \hbox (1.44878pt too wide) in paragraph at lines 27--28
 []\TU/lmr/m/n/12 Mo-der-ne Ta-cho-gra-phen un-ter-stüt-zen meh-re-re phy-si-ka-
 li-sche Kom-mu-ni-ka-ti-ons-schnitt-
  []
 
 
-Overfull \hbox (3.81805pt too wide) in paragraph at lines 19--29
-[]\TU/lmr/m/n/12 UART (Uni-ver-sal Asyn-chro-no-us Re-cei-ver/Trans-mit-ter): UA
-RT Kom-mu-ni-ka-ti-on oder
- []
-
-
-
-[10]
-
-[11]
-
-[12]
-
-[13]
-
-[14]
-Overfull \hbox (8.42484pt too wide) in paragraph at lines 50--51
+Overfull \hbox (8.42484pt too wide) in paragraph at lines 36--37
 []\TU/lmr/m/n/12 Die hard-ware-sei-ti-ge Rea-li-sie-rung des Aus-le-se-ge-räts ba-siert ma
 ß-geb-lich auf dem ESP32,
  []
 
+<bilder/esp.png, id=236, 501.875pt x 501.875pt>
+File: bilder/esp.png Graphic file (type png)
+<use bilder/esp.png>
+Package luatex.def Info: bilder/esp.png  used on input line 40.
+(luatex.def)             Requested size: 213.3957pt x 213.39743pt.
 
 
-[15]
+[7<./bilder/tachograph.png>]
+Overfull \hbox (8.70079pt too wide) in paragraph at lines 49--51
+\TU/lmr/m/n/12 ISM-Band mit 40 Ka-nä-len und [][]Gaus-si-an Fre-quen-cy Shift 
+Key-ing (GFSK)[]-Modulation;
+ []
+
+
+
+[8<./bilder/esp.png>]
+<bilder/max3232.png, id=277, 501.875pt x 501.875pt>
+File: bilder/max3232.png Graphic file (type png)
+<use bilder/max3232.png>
+Package luatex.def Info: bilder/max3232.png  used on input line 61.
+(luatex.def)             Requested size: 85.35698pt x 85.3559pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 62.
+See the caption package documentation for explanation.
+
+<bilder/l9637d.png, id=279, 401.5pt x 270.00874pt>
+File: bilder/l9637d.png Graphic file (type png)
+<use bilder/l9637d.png>
+Package luatex.def Info: bilder/l9637d.png  used on input line 70.
+(luatex.def)             Requested size: 213.3957pt x 143.51183pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 71.
+See the caption package documentation for explanation.
+
+<bilder/mp1584.png, id=281, 401.5pt x 401.5pt>
+File: bilder/mp1584.png Graphic file (type png)
+<use bilder/mp1584.png>
+Package luatex.def Info: bilder/mp1584.png  used on input line 78.
+(luatex.def)             Requested size: 170.71396pt x 170.71794pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 79.
+See the caption package documentation for explanation.
+
+
+
+[9<./bilder/max3232.png><./bilder/l9637d.png>])
+Overfull \hbox (2.66216pt too wide) in paragraph at lines 88--136
+[]\TU/lmr/m/n/12 Das Es-pres-sif IoT De-ve-lo-p-ment Frame-work (ESP-IDF) ist da
+s of-fi-zi-el-le Entwicklungs-
+ []
+
+
+
+[10<./bilder/mp1584.png>] (./kapitel/anforderungsanalyse.tex
+
+[11]
+chapter 3.
+
+
+[12
+
+]
+
+[13]
+
+[14]
+
+[15]) (./kapitel/systementwurf.tex
 
 [16]
+chapter 4.
+<bilder/schaltplan.png, id=377, 1282.7925pt x 884.30376pt>
+File: bilder/schaltplan.png Graphic file (type png)
+<use bilder/schaltplan.png>
+Package luatex.def Info: bilder/schaltplan.png  used on input line 9.
+(luatex.def)             Requested size: 426.79141pt x 294.20947pt.
 
-[17])
 
-[18] (./kapitel/anforderungsanalyse.tex
+[17
+
+<./bilder/schaltplan.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\gls' on input line 17.
+
+
+Overfull \hbox (14.13387pt too wide) in paragraph at lines 21--22
+\TU/lmr/m/n/12 wen-di-ge Pe-gel-an-pas-sung. Im Fo-kus ste-hen RS-232, K-Line un
+d die Service-Schnittstelle,
+ []
+
+
+
+[18]) (./kapitel/implementierung.tex
 
 [19]
-chapter 3.
+chapter 5.
+<bilder/monolitisch.png, id=408, 434.62375pt x 579.16376pt>
+File: bilder/monolitisch.png Graphic file (type png)
+<use bilder/monolitisch.png>
+Package luatex.def Info: bilder/monolitisch.png  used on input line 11.
+(luatex.def)             Requested size: 170.71396pt x 227.49017pt.
 
 
 [20
 
-
-Missing character: There is no   (U+202F) in font [lmroman12-regular]:+tlig;!
 ]
-<bilder/table.png, id=258, 722.7pt x 292.09125pt>
-File: bilder/table.png Graphic file (type png)
-<use bilder/table.png>
-Package luatex.def Info: bilder/table.png  used on input line 38.
-(luatex.def)             Requested size: 85.35698pt x 34.49677pt.
-)
-Overfull \hbox (37.44942pt too wide) in paragraph at lines 37--128
-\TU/lmr/m/n/12 schränkt. Kri-ti-sche Ein-schrän-kun-gen der am Markt be-find-l
-i-chen Lö-sun-gen: []
- []
+<bilder/Prototyp1.png, id=413, 2276.505pt x 3035.34pt>
+File: bilder/Prototyp1.png Graphic file (type png)
+<use bilder/Prototyp1.png>
+Package luatex.def Info: bilder/Prototyp1.png  used on input line 20.
+(luatex.def)             Requested size: 149.3796pt x 199.15665pt.
+<bilder/pcbvorne.png, id=414, 401.5pt x 1084.05pt>
+File: bilder/pcbvorne.png Graphic file (type png)
+<use bilder/pcbvorne.png>
+Package luatex.def Info: bilder/pcbvorne.png  used on input line 31.
+(luatex.def)             Requested size: 128.03871pt x 345.71211pt.
+<bilder/pcbhinten.png, id=415, 974.64125pt x 2791.42876pt>
+File: bilder/pcbhinten.png Graphic file (type png)
+<use bilder/pcbhinten.png>
+Package luatex.def Info: bilder/pcbhinten.png  used on input line 35.
+(luatex.def)             Requested size: 128.03871pt x 366.68932pt.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--128
+[21<./bilder/monolitisch.png><./bilder/Prototyp1.png>]
 
- []
-
-(./kapitel/systementwurf.tex
-
-[21
-Missing character: There is no   (U+202F) in font [lmroman12-regular]:+tlig;!
-Missing character: There is no   (U+202F) in font [lmroman12-regular]:+tlig;!
-Missing character: There is no   (U+202F) in font [lmroman12-regular]:+tlig;!
-Missing character: There is no   (U+202F) in font [lmroman12-regular]:+tlig;!
-Missing character: There is no   (U+202F) in font [lmroman12-regular]:+tlig;!
-<./bilder/table.png>]
-chapter 4.
-
-Overfull \hbox (12.13016pt too wide) in paragraph at lines 4--10
-\TU/lmr/m/n/12 K-Line (L9637D). Si-gnal-in-te-gri-tät/EMV: Ent-stör-glie-der 
-(Fer-rit-per-len, RC-Netzwerke),
- []
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\gls' on input line 42.
 
 
-Overfull \hbox (2.77385pt too wide) in paragraph at lines 16--17
-[]\TU/lmr/m/n/12 Mikrocontroller-Kern (ESP32-S3-WROOM-1) inkl. Takt/Re-set, USB-
-C-Debug
- []
+LaTeX Warning: Float too large for page by 18.9854pt on input line 109.
 
+) (./kapitel/application.tex
 
+[22<./bilder/pcbvorne.png><./bilder/pcbhinten.png>]
 
-[22
-
+[23
+Missing character: There is no ≥ (U+2265) in font [lmroman12-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman12-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman12-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman12-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman12-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman12-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman12-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman12-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman12-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman12-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman12-regular]:+tlig;!
 ]
-Overfull \hbox (10.40079pt too wide) in paragraph at lines 27--28
-\TU/lmr/m/n/12 Serie, SMA/SMBJ) klemmt tran-si-en-te Über-span-nun-gen ge-mä
-ß ISO 7637-2/ISO 16750-
- []
-
-
-
-[23]
-Overfull \hbox (30.51646pt too wide) in paragraph at lines 62--64
-\TU/lmr/m/it/12 Frei-lauf-pfad. \TU/lmr/m/n/12 Der MP1584 ist nicht syn-chron; 
-ei-ne ex-ter-ne Schottky-Diode (mind.40V/3A,
- []
-
-
-Overfull \hbox (8.33186pt too wide) in paragraph at lines 93--94
-\TU/lmr/m/n/12 Sende-Peaks des WLAN/BT-Blocks (200–300mA) wer-den durch eng pl
-at-zier-te Puffer-
- []
-
-
-
-[24]
-
-[25]
-Overfull \hbox (2.53922pt too wide) in paragraph at lines 128--129
-[]\TU/lmr/m/n/12 Schutz/EMV: Se-ri-en-wi-der-stand (ca. 100$\OT1/cmr/m/n/12 
-$\TU/lmr/m/n/12 ) di-rekt am K-Pin ge-gen Über-schwin-
- []
-
-) (./kapitel/implementierung.tex
-
-[26]
-chapter 5.
-
-
-[27
-
-]
-Overfull \hbox (10.68866pt too wide) in paragraph at lines 30--31
-[]\TU/lmr/bx/n/12 ESP32-Antenne.[] \TU/lmr/m/n/12 Kupfer-\TU/lmr/m/it/12 Keep-Ou
-t \TU/lmr/m/n/12 un-ter dem An-ten-nen-be-reich des ESP32-Moduls
- []
-
-
-Overfull \hbox (11.48286pt too wide) in paragraph at lines 33--35
-[]\TU/lmr/bx/n/12 USB-Datenführung.[] \TU/lmr/m/n/12 Dif-fe-renz-paar-füh-rung
- mit Ziel-im-pe-danz $\OML/cmm/m/it/12 Z[] \OT1/cmr/m/n/12 = 90 
-$\TU/lmr/m/n/12 ; Längen-
- []
-
-
-
-[28]
-Overfull \hbox (28.65805pt too wide) in paragraph at lines 51--52
-[]\TU/lmr/bx/n/12 U2 MAX3232 \TU/lmr/m/n/12 (RS-232-Pegelwandler) + 4$\OMS/cmsy
-/m/n/12 $\TU/lmr/m/n/12 100nF Charge-Pump-Kondensatoren. 
- []
-
-
-Overfull \hbox (14.27415pt too wide) in paragraph at lines 53--54
-[]\TU/lmr/bx/n/12 U3 US-BLC6-2SC6 \TU/lmr/m/n/12 (USB-ESD-Schutz), \TU/lmr/bx/n
-/12 FB1 \TU/lmr/m/n/12 600$\OT1/cmr/m/n/12 
-$\TU/lmr/m/n/12 @100MHz, \TU/lmr/bx/n/12 Q2 \TU/lmr/m/n/12 P-MOSFET
- []
-
-
-Overfull \hbox (2.01785pt too wide) in paragraph at lines 58--60
-\TU/lmr/m/n/12 va-ti-ver). Löt-stopp dun-kel (bes-se-re op-ti-sche Kon-trol-le)
-, Ober-flä-chen-fi-nish HAL/ENIG
- []
-
-
-Overfull \hbox (22.37408pt too wide) in paragraph at lines 62--64
-[]\TU/lmr/bx/n/12 Be-stü-ckungs-rei-hen-fol-ge.[] \TU/lmr/m/n/12 (1) kleins-te/
-kri-ti-sche Bau-tei-le (ESD-Arrays, 0402-MLCC),
- []
-
-
-Overfull \hbox (11.89532pt too wide) in paragraph at lines 66--68
-[]\TU/lmr/bx/n/12 Vor-in-spek-ti-on.[] \TU/lmr/m/n/12 Op-ti-sche Kon-trol-le (Lu
-n-ker, Lot-brü-cken, Ab-stand am SW-Knoten),
- []
-
-
-
-[29]
-Overfull \hbox (0.57982pt too wide) in paragraph at lines 82--83
-[]\TU/lmr/m/n/12 WLAN-Peakstrom ge-zielt pro-vo-zie-ren (z.B. Ping-Traffic); Tra
-n-si-en-ten auf dem
- []
-
-
-Overfull \hbox (2.91309pt too wide) in paragraph at lines 106--108
-[]\TU/lmr/bx/n/12 Ver-sor-gungs-ripp-le.[] \TU/lmr/m/n/12 Mess-spit-ze mit \TU/
-lmr/m/it/12 spring ground\TU/lmr/m/n/12 , 20MHz-Bandlimit; Mess-punkt
- []
-
-
-Overfull \hbox (5.61pt too wide) in paragraph at lines 114--116
-[]\TU/lmr/bx/n/12 Schnitt-stel-len-si-gna-le.[] \TU/lmr/m/n/12 UART-Augendiagram
-m (RS-232 nach MAX3232), K-Line-
- []
-
-
-
-[30]
-Overfull \hbox (16.13283pt too wide) in paragraph at lines 121--122
-\OML/cmm/m/it/12 f[]$ \TU/lmr/m/n/12 und $\OML/cmm/m/it/12 n \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 f[]$ \TU/lmr/m/n/12 be-wer-ten; falls er-for-der-lich Snub-ber er-g
-än-zen (R–C 5–22$\OT1/cmr/m/n/12 
-$ \TU/lmr/m/n/12 / 330–680pF). 
- []
-
-
-Overfull \hbox (0.67413pt too wide) in paragraph at lines 128--129
-[]\TU/lmr/bx/n/12 Automotive-Elektrik/EMV.[] \TU/lmr/m/n/12 ISO 7637-2 / ISO 167
-50-2 (Tran-si-en-te), ISO 10605
- []
-
-) (./kapitel/diskussion.tex
-
-[31]
 chapter 6.
+<bilder/app1.png, id=543, 1183.42125pt x 2565.585pt>
+File: bilder/app1.png Graphic file (type png)
+<use bilder/app1.png>
+Package luatex.def Info: bilder/app1.png  used on input line 18.
+(luatex.def)             Requested size: 132.30429pt x 286.7955pt.
+<bilder/app2.png, id=544, 1183.42125pt x 2565.585pt>
+File: bilder/app2.png Graphic file (type png)
+<use bilder/app2.png>
+Package luatex.def Info: bilder/app2.png  used on input line 23.
+(luatex.def)             Requested size: 132.30429pt x 286.7955pt.
+<bilder/app9.png, id=545, 1183.42125pt x 2565.585pt>
+File: bilder/app9.png Graphic file (type png)
+<use bilder/app9.png>
+Package luatex.def Info: bilder/app9.png  used on input line 28.
+(luatex.def)             Requested size: 132.30429pt x 286.7955pt.
+
+
+[24
+
+]
+<bilder/app3.png, id=552, 1183.42125pt x 2565.585pt>
+File: bilder/app3.png Graphic file (type png)
+<use bilder/app3.png>
+Package luatex.def Info: bilder/app3.png  used on input line 39.
+(luatex.def)             Requested size: 132.30429pt x 286.7955pt.
+<bilder/app4.png, id=553, 1183.42125pt x 2565.585pt>
+File: bilder/app4.png Graphic file (type png)
+<use bilder/app4.png>
+Package luatex.def Info: bilder/app4.png  used on input line 44.
+(luatex.def)             Requested size: 132.30429pt x 286.7955pt.
+<bilder/app5.png, id=554, 591.71063pt x 1282.7925pt>
+File: bilder/app5.png Graphic file (type png)
+<use bilder/app5.png>
+Package luatex.def Info: bilder/app5.png  used on input line 49.
+(luatex.def)             Requested size: 132.30429pt x 286.81506pt.
+
+
+[25<./bilder/app1.png><./bilder/app2.png><./bilder/app9.png>]
+<bilder/app6.png, id=561, 1183.42125pt x 2565.585pt>
+File: bilder/app6.png Graphic file (type png)
+<use bilder/app6.png>
+Package luatex.def Info: bilder/app6.png  used on input line 60.
+(luatex.def)             Requested size: 132.30429pt x 286.7955pt.
+<bilder/app7.png, id=562, 1183.42125pt x 2565.585pt>
+File: bilder/app7.png Graphic file (type png)
+<use bilder/app7.png>
+Package luatex.def Info: bilder/app7.png  used on input line 65.
+(luatex.def)             Requested size: 132.30429pt x 286.7955pt.
+<bilder/app8.png, id=563, 1183.42125pt x 2565.585pt>
+File: bilder/app8.png Graphic file (type png)
+<use bilder/app8.png>
+Package luatex.def Info: bilder/app8.png  used on input line 70.
+(luatex.def)             Requested size: 132.30429pt x 286.7955pt.
+
+
+[26<./bilder/app3.png><./bilder/app4.png><./bilder/app5.png>])
+(./kapitel/diskussion.tex
+
+[27<./bilder/app6.png><./bilder/app7.png><./bilder/app8.png>]
+chapter 7.
 ) (./kapitel/fazit.tex
 
-[32
-
-]
-chapter 7.
-) (./kapitel/schluss.tex
-
-[33
+[28
 
 ]
 chapter 8.
-) (./anlagen/beispiel.tex
-
-[34
-
-]
-chapter A.
 )
 
-LaTeX Warning: Empty bibliography on input line 161.
+[29
+
+]
+
+[30]
+chapter without number
+
+Overfull \hbox (4.50851pt too wide) in paragraph at lines 172--172
+[]\TU/lmr/m/n/12 Eu-ro-pean Com-mis-si-on. \TU/lmr/m/it/12 Com-mis-si-on Im-ple-
+men-ting Re-gu-la-ti-on (EU) 2021/1228\TU/lmr/m/n/12 .
+ []
 
 
 
-[35
+[31
 
-] (./thesis.lof)
+]
+
+[32] (./thesis.lof)
 \tf@lof=\write13
 
 \openout13 = thesis.lof
 
 
-[36
+[33
 
 ] (./thesis.lot)
 \tf@lot=\write14
 
 \openout14 = thesis.lot
+ (./thesis.acr
 
+[34
+
+]) (./thesis.syi
+
+[35
+
+
+]) (./thesis.gls
+
+[36
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+[]|\TU/lmr/m/n/12 De-di-ca-ted Short-Range Com-mu-ni-ca-ti-ons; stan-dar-di-sier
+-te
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\TU/lmr/m/n/12 Kurz-stre-cken-kom-mu-ni-ka-ti-on für Fahrzeug-zu-Infrastruktur-
+
+ []
+
+
+Underfull \hbox (badness 1960) in paragraph at lines 32--32
+[]|\TU/lmr/m/n/12 Re-cei-ve; Emp-fangs-lei-tung oder Emp-fangs-weg ei-ner se-ri-
+el-len
+ []
+
+)
 
 [37
 
-] (./thesis.loa)
-\tf@loa=\write15
-
-\openout15 = thesis.loa
-
-
-[38
-
-] (./thesis.lol)
-\tf@lol=\write16
-
-\openout16 = thesis.lol
-
-No file thesis.acr.
-No file thesis.syi.
-No file thesis.gls.
-
-
-[39
 
 ] (./thesis.ind)
 
-[40
+[38
 
-
-] (./anlagen/cd.tex)
-
-[41
 
 ]
-
-[42
-
-]
-runsystem(latexminted cleantemp  --timestamp 20251118160016 2EF71E68B4AD97F63048
+runsystem(latexminted cleantemp  --timestamp 20260119164523 2EF71E68B4AD97F63048
 0BCEBC1842FB)...executed.
  (./thesis.aux)
  ***********
@@ -2579,39 +2586,35 @@ Package logreq Info: Writing requests to 'thesis.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 69962 strings out of 475506
- 195338,3417909 words of node,token memory allocated
- 1801 words of node memory still in use:
-   36 hlist, 2 vlist, 11 rule, 21 glue, 4 kern, 1 glyph, 126 attribute, 87 glue_
-spec, 111 attribute_list, 2 write, 1 user_defined, 39 pdf_literal, 2 pdf_action,
- 18 pdf_colorstack nodes
-   avail lists: 1:3,2:6925,3:4598,4:143,5:726,6:162,7:13466,8:70,9:865,10:33,11:
-1817
- 90958 multiletter control sequences out of 65536+600000
- 52 fonts using 3831111 bytes
- 122i,21n,128p,10897b,2461s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.ot
-f></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.
-otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman10-boldi
-talic.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman12
--italic.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman
-10-bold.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman
-10-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmro
-man12-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/l
-mroman12-bold.otf></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-mi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12
-.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
-></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
-sr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
-/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/lo
-cal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on thesis.pdf (42 pages, 468940 bytes).
+ 70975 strings out of 475506
+ 125009,3417909 words of node,token memory allocated
+ 1904 words of node memory still in use:
+   36 hlist, 2 vlist, 11 rule, 21 glue, 4 kern, 1 glyph, 132 attribute, 92 glue_
+spec, 114 attribute_list, 2 write, 1 user_defined, 39 pdf_literal, 12 pdf_action
+, 18 pdf_colorstack nodes
+   avail lists: 1:3,2:6943,3:4596,4:176,5:392,6:362,7:7104,8:139,9:2753,10:24,11
+:710
+ 91956 multiletter control sequences out of 65536+600000
+ 55 fonts using 4225055 bytes
+ 122i,20n,128p,10901b,2461s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regul
+ar.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman12-it
+alic.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmmono12-r
+egular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman1
+0-italic.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroma
+n8-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsa
+ns10-bold.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmrom
+an10-bold.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmrom
+an10-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lm
+roman12-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm
+/lmroman12-bold.otf></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb>
+Output written on thesis.pdf (38 pages, 12027436 bytes).
 
-PDF statistics: 741 PDF objects out of 1000 (max. 8388607)
- 636 compressed objects within 7 object streams
- 200 named destinations out of 1000 (max. 131072)
- 716 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 1055 PDF objects out of 1200 (max. 8388607)
+ 783 compressed objects within 8 object streams
+ 172 named destinations out of 1000 (max. 131072)
+ 692 words of extra memory for PDF output out of 10000 (max. 100000000)
 

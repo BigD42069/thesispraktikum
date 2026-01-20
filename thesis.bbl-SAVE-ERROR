@@ -1,0 +1,507 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{axelson-serial-port-complete}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=787be06f3e90735607694b35a2233fbc}{%
+           family={Axelson},
+           familyi={A\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Lakeview Research}%
+      }
+      \strng{namehash}{787be06f3e90735607694b35a2233fbc}
+      \strng{fullhash}{787be06f3e90735607694b35a2233fbc}
+      \strng{fullhashraw}{787be06f3e90735607694b35a2233fbc}
+      \strng{bibnamehash}{787be06f3e90735607694b35a2233fbc}
+      \strng{authorbibnamehash}{787be06f3e90735607694b35a2233fbc}
+      \strng{authornamehash}{787be06f3e90735607694b35a2233fbc}
+      \strng{authorfullhash}{787be06f3e90735607694b35a2233fbc}
+      \strng{authorfullhashraw}{787be06f3e90735607694b35a2233fbc}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{title}{Serial Port Complete: COM Ports, USB Virtual COM Ports, and Ports for Embedded Systems}
+      \field{year}{2007}
+    \endentry
+    \entry{bluetooth-core54}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=84539b4780dccc038d9b9cfd67f039cf}{%
+           family={{Bluetooth SIG}},
+           familyi={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{84539b4780dccc038d9b9cfd67f039cf}
+      \strng{fullhash}{84539b4780dccc038d9b9cfd67f039cf}
+      \strng{fullhashraw}{84539b4780dccc038d9b9cfd67f039cf}
+      \strng{bibnamehash}{84539b4780dccc038d9b9cfd67f039cf}
+      \strng{authorbibnamehash}{84539b4780dccc038d9b9cfd67f039cf}
+      \strng{authornamehash}{84539b4780dccc038d9b9cfd67f039cf}
+      \strng{authorfullhash}{84539b4780dccc038d9b9cfd67f039cf}
+      \strng{authorfullhashraw}{84539b4780dccc038d9b9cfd67f039cf}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Revision 5.4}
+      \field{title}{Bluetooth Core Specification Version 5.4}
+      \field{urlday}{15}
+      \field{urlmonth}{1}
+      \field{urlyear}{2025}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.bluetooth.com/specifications/specs/core-specification-5-4/
+      \endverb
+      \verb{url}
+      \verb https://www.bluetooth.com/specifications/specs/core-specification-5-4/
+      \endverb
+    \endentry
+    \entry{espressif-esp32}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=66589871a3c3f27bcbf3891133af42b1}{%
+           family={{Espressif Systems}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{66589871a3c3f27bcbf3891133af42b1}
+      \strng{fullhash}{66589871a3c3f27bcbf3891133af42b1}
+      \strng{fullhashraw}{66589871a3c3f27bcbf3891133af42b1}
+      \strng{bibnamehash}{66589871a3c3f27bcbf3891133af42b1}
+      \strng{authorbibnamehash}{66589871a3c3f27bcbf3891133af42b1}
+      \strng{authornamehash}{66589871a3c3f27bcbf3891133af42b1}
+      \strng{authorfullhash}{66589871a3c3f27bcbf3891133af42b1}
+      \strng{authorfullhashraw}{66589871a3c3f27bcbf3891133af42b1}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Version 3.4}
+      \field{title}{ESP32 Series Datasheet}
+      \field{urlday}{15}
+      \field{urlmonth}{1}
+      \field{urlyear}{2025}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf
+      \endverb
+    \endentry
+    \entry{eu-2016-799}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=a1b813a6e85874b4c945aec2cdbea74c}{%
+           family={{European Commission}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{a1b813a6e85874b4c945aec2cdbea74c}
+      \strng{fullhash}{a1b813a6e85874b4c945aec2cdbea74c}
+      \strng{fullhashraw}{a1b813a6e85874b4c945aec2cdbea74c}
+      \strng{bibnamehash}{a1b813a6e85874b4c945aec2cdbea74c}
+      \strng{authorbibnamehash}{a1b813a6e85874b4c945aec2cdbea74c}
+      \strng{authornamehash}{a1b813a6e85874b4c945aec2cdbea74c}
+      \strng{authorfullhash}{a1b813a6e85874b4c945aec2cdbea74c}
+      \strng{authorfullhashraw}{a1b813a6e85874b4c945aec2cdbea74c}
+      \field{extraname}{1}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Commission Implementing Regulation (EU) 2016/799}
+      \field{urlday}{13}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2016}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0799
+      \endverb
+      \verb{url}
+      \verb https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0799
+      \endverb
+    \endentry
+    \entry{eu-2021-1228}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=a1b813a6e85874b4c945aec2cdbea74c}{%
+           family={{European Commission}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{a1b813a6e85874b4c945aec2cdbea74c}
+      \strng{fullhash}{a1b813a6e85874b4c945aec2cdbea74c}
+      \strng{fullhashraw}{a1b813a6e85874b4c945aec2cdbea74c}
+      \strng{bibnamehash}{a1b813a6e85874b4c945aec2cdbea74c}
+      \strng{authorbibnamehash}{a1b813a6e85874b4c945aec2cdbea74c}
+      \strng{authornamehash}{a1b813a6e85874b4c945aec2cdbea74c}
+      \strng{authorfullhash}{a1b813a6e85874b4c945aec2cdbea74c}
+      \strng{authorfullhashraw}{a1b813a6e85874b4c945aec2cdbea74c}
+      \field{extraname}{2}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Commission Implementing Regulation (EU) 2021/1228}
+      \field{urlday}{13}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32021R1228
+      \endverb
+      \verb{url}
+      \verb https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32021R1228
+      \endverb
+    \endentry
+    \entry{eu-gdpr-2016-679}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=3179956fa9e74184739a2680047976ee}{%
+           family={{European Parliament and Council}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{3179956fa9e74184739a2680047976ee}
+      \strng{fullhash}{3179956fa9e74184739a2680047976ee}
+      \strng{fullhashraw}{3179956fa9e74184739a2680047976ee}
+      \strng{bibnamehash}{3179956fa9e74184739a2680047976ee}
+      \strng{authorbibnamehash}{3179956fa9e74184739a2680047976ee}
+      \strng{authornamehash}{3179956fa9e74184739a2680047976ee}
+      \strng{authorfullhash}{3179956fa9e74184739a2680047976ee}
+      \strng{authorfullhashraw}{3179956fa9e74184739a2680047976ee}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Regulation (EU) 2016/679 (General Data Protection Regulation)}
+      \field{urlday}{13}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2016}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://eur-lex.europa.eu/eli/reg/2016/679/oj
+      \endverb
+      \verb{url}
+      \verb https://eur-lex.europa.eu/eli/reg/2016/679/oj
+      \endverb
+    \endentry
+    \entry{infineon-ipd90p03p4l-04}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=71295e7a511001f41e891ad73d10dea1}{%
+           family={{Infineon Technologies}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{71295e7a511001f41e891ad73d10dea1}
+      \strng{fullhash}{71295e7a511001f41e891ad73d10dea1}
+      \strng{fullhashraw}{71295e7a511001f41e891ad73d10dea1}
+      \strng{bibnamehash}{71295e7a511001f41e891ad73d10dea1}
+      \strng{authorbibnamehash}{71295e7a511001f41e891ad73d10dea1}
+      \strng{authornamehash}{71295e7a511001f41e891ad73d10dea1}
+      \strng{authorfullhash}{71295e7a511001f41e891ad73d10dea1}
+      \strng{authorfullhashraw}{71295e7a511001f41e891ad73d10dea1}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{IPD90P03P4L-04: OptiMOS P-Channel MOSFET Datasheet}
+      \field{urlday}{13}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2014}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.infineon.com/dgdl/Infineon-IPD90P03P4L-04-DS-v02_03-EN.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.infineon.com/dgdl/Infineon-IPD90P03P4L-04-DS-v02_03-EN.pdf
+      \endverb
+    \endentry
+    \entry{iso-9141-2}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=7058e4bd76f877c52b621c942b30613c}{%
+           family={{International Organization for Standardization}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{fullhash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{fullhashraw}{7058e4bd76f877c52b621c942b30613c}
+      \strng{bibnamehash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{authorbibnamehash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{authornamehash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{authorfullhash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{authorfullhashraw}{7058e4bd76f877c52b621c942b30613c}
+      \field{extraname}{1}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{ISO 9141-2:1994}
+      \field{title}{Road vehicles --- Diagnostic systems --- Part 2: CARB requirements for the interchange of digital information}
+      \field{year}{1994}
+    \endentry
+    \entry{iso-14230-2}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=7058e4bd76f877c52b621c942b30613c}{%
+           family={{International Organization for Standardization}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{fullhash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{fullhashraw}{7058e4bd76f877c52b621c942b30613c}
+      \strng{bibnamehash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{authorbibnamehash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{authornamehash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{authorfullhash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{authorfullhashraw}{7058e4bd76f877c52b621c942b30613c}
+      \field{extraname}{2}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{ISO 14230-2:2006}
+      \field{title}{Road vehicles --- Diagnostic systems --- Keyword Protocol 2000 --- Part 2: Data link layer}
+      \field{year}{2006}
+    \endentry
+    \entry{kedso-impressum}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=e0104de20550e34a053bf40d8f43bdb7}{%
+           family={{Kedso}},
+           familyi={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{e0104de20550e34a053bf40d8f43bdb7}
+      \strng{fullhash}{e0104de20550e34a053bf40d8f43bdb7}
+      \strng{fullhashraw}{e0104de20550e34a053bf40d8f43bdb7}
+      \strng{bibnamehash}{e0104de20550e34a053bf40d8f43bdb7}
+      \strng{authorbibnamehash}{e0104de20550e34a053bf40d8f43bdb7}
+      \strng{authornamehash}{e0104de20550e34a053bf40d8f43bdb7}
+      \strng{authorfullhash}{e0104de20550e34a053bf40d8f43bdb7}
+      \strng{authorfullhashraw}{e0104de20550e34a053bf40d8f43bdb7}
+      \field{extraname}{1}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Impressum}
+      \field{urlday}{13}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://kedso.de/impressum/
+      \endverb
+      \verb{url}
+      \verb https://kedso.de/impressum/
+      \endverb
+    \endentry
+    \entry{kedso-home}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=e0104de20550e34a053bf40d8f43bdb7}{%
+           family={{Kedso}},
+           familyi={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{e0104de20550e34a053bf40d8f43bdb7}
+      \strng{fullhash}{e0104de20550e34a053bf40d8f43bdb7}
+      \strng{fullhashraw}{e0104de20550e34a053bf40d8f43bdb7}
+      \strng{bibnamehash}{e0104de20550e34a053bf40d8f43bdb7}
+      \strng{authorbibnamehash}{e0104de20550e34a053bf40d8f43bdb7}
+      \strng{authornamehash}{e0104de20550e34a053bf40d8f43bdb7}
+      \strng{authorfullhash}{e0104de20550e34a053bf40d8f43bdb7}
+      \strng{authorfullhashraw}{e0104de20550e34a053bf40d8f43bdb7}
+      \field{extraname}{2}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Kedso | Softwareentwicklung - Sicher | Schnell | Effizient}
+      \field{urlday}{13}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://kedso.de/
+      \endverb
+      \verb{url}
+      \verb https://kedso.de/
+      \endverb
+    \endentry
+    \entry{littelfuse-smaj}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=b720fcfe7f2fed67908f2ce755699a73}{%
+           family={{Littelfuse}},
+           familyi={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{b720fcfe7f2fed67908f2ce755699a73}
+      \strng{fullhash}{b720fcfe7f2fed67908f2ce755699a73}
+      \strng{fullhashraw}{b720fcfe7f2fed67908f2ce755699a73}
+      \strng{bibnamehash}{b720fcfe7f2fed67908f2ce755699a73}
+      \strng{authorbibnamehash}{b720fcfe7f2fed67908f2ce755699a73}
+      \strng{authornamehash}{b720fcfe7f2fed67908f2ce755699a73}
+      \strng{authorfullhash}{b720fcfe7f2fed67908f2ce755699a73}
+      \strng{authorfullhashraw}{b720fcfe7f2fed67908f2ce755699a73}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{SMAJ Transient Voltage Suppressor Diodes}
+      \field{urlday}{13}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2017}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diodes/littelfuse_tvs_diodes_smaj_datasheet.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diodes/littelfuse_tvs_diodes_smaj_datasheet.pdf
+      \endverb
+    \endentry
+    \entry{mps-mp1584}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=4e8e970606abedd72af71dccbf0e9c85}{%
+           family={{Monolithic Power Systems}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{4e8e970606abedd72af71dccbf0e9c85}
+      \strng{fullhash}{4e8e970606abedd72af71dccbf0e9c85}
+      \strng{fullhashraw}{4e8e970606abedd72af71dccbf0e9c85}
+      \strng{bibnamehash}{4e8e970606abedd72af71dccbf0e9c85}
+      \strng{authorbibnamehash}{4e8e970606abedd72af71dccbf0e9c85}
+      \strng{authornamehash}{4e8e970606abedd72af71dccbf0e9c85}
+      \strng{authorfullhash}{4e8e970606abedd72af71dccbf0e9c85}
+      \strng{authorfullhashraw}{4e8e970606abedd72af71dccbf0e9c85}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{MP1584: 3A, 23V, 1.5MHz Step-Down Converter}
+      \field{urlday}{13}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2013}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MP1584/document_id/1682
+      \endverb
+      \verb{url}
+      \verb https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MP1584/document_id/1682
+      \endverb
+    \endentry
+    \entry{st-l9637d}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=c38884ab3cf908c2798725960369391b}{%
+           family={{STMicroelectronics}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{c38884ab3cf908c2798725960369391b}
+      \strng{fullhash}{c38884ab3cf908c2798725960369391b}
+      \strng{fullhashraw}{c38884ab3cf908c2798725960369391b}
+      \strng{bibnamehash}{c38884ab3cf908c2798725960369391b}
+      \strng{authorbibnamehash}{c38884ab3cf908c2798725960369391b}
+      \strng{authornamehash}{c38884ab3cf908c2798725960369391b}
+      \strng{authorfullhash}{c38884ab3cf908c2798725960369391b}
+      \strng{authorfullhashraw}{c38884ab3cf908c2798725960369391b}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{L9637D: ISO 9141 Interface}
+      \field{urlday}{13}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2004}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.st.com/resource/en/datasheet/l9637d.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.st.com/resource/en/datasheet/l9637d.pdf
+      \endverb
+    \endentry
+    \entry{ti-max3232}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=67e54b1ee931f3f4bddfefa5fbde5fd8}{%
+           family={{Texas Instruments}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{67e54b1ee931f3f4bddfefa5fbde5fd8}
+      \strng{fullhash}{67e54b1ee931f3f4bddfefa5fbde5fd8}
+      \strng{fullhashraw}{67e54b1ee931f3f4bddfefa5fbde5fd8}
+      \strng{bibnamehash}{67e54b1ee931f3f4bddfefa5fbde5fd8}
+      \strng{authorbibnamehash}{67e54b1ee931f3f4bddfefa5fbde5fd8}
+      \strng{authornamehash}{67e54b1ee931f3f4bddfefa5fbde5fd8}
+      \strng{authorfullhash}{67e54b1ee931f3f4bddfefa5fbde5fd8}
+      \strng{authorfullhashraw}{67e54b1ee931f3f4bddfefa5fbde5fd8}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{MAX3232: 3-V to 5.5-V, Low-Power, Two-Channel RS-232 Line Driver/Receiver}
+      \field{urlday}{13}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2015}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.ti.com/lit/ds/symlink/max3232.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.ti.com/lit/ds/symlink/max3232.pdf
+      \endverb
+    \endentry
+    \entry{vishay-smbj}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=1a63d4b75b9b255b59d6c39df084816c}{%
+           family={{Vishay Semiconductors}},
+           familyi={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{1a63d4b75b9b255b59d6c39df084816c}
+      \strng{fullhash}{1a63d4b75b9b255b59d6c39df084816c}
+      \strng{fullhashraw}{1a63d4b75b9b255b59d6c39df084816c}
+      \strng{bibnamehash}{1a63d4b75b9b255b59d6c39df084816c}
+      \strng{authorbibnamehash}{1a63d4b75b9b255b59d6c39df084816c}
+      \strng{authornamehash}{1a63d4b75b9b255b59d6c39df084816c}
+      \strng{authorfullhash}{1a63d4b75b9b255b59d6c39df084816c}
+      \strng{authorfullhashraw}{1a63d4b75b9b255b59d6c39df084816c}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{SMBJ Transient Voltage Suppressor Series}
+      \field{urlday}{13}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.vishay.com/docs/88301/smbj.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.vishay.com/docs/88301/smbj.pdf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

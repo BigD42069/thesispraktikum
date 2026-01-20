@@ -1,38 +1,105 @@
 \chapter{Analyse der Anforderungen}
-Um eine funktionale, sichere und wirtschaftlich sinnvolle Lösung zu entwickeln, ist vorab eine strukturierte Analyse der projektbezogenen Anforderungen notwendig. Diese lassen sich in funktionale, nicht-funktionale, technische sowie sicherheitsrelevante Anforderungen gliedern. Darüber hinaus wird ein kurzer Vergleich zu bestehenden Lösungen vorgenommen, um die Positionierung des geplanten Systems klar abzugrenzen.
+Um eine funktionale, sichere und wirtschaftlich sinnvolle Lösung zu entwickeln, ist vorab eine strukturierte Analyse der projektbezogenen Anforderungen notwendig. Diese lassen sich in funktionale, nicht-funktionale, technische sowie sicherheitsrelevante Anforderungen gliedern.
+\newpage
 \section{Funktionale Anforderungen}
-Die zentralen Funktionen des zu entwickelnden Auslesegeräts ergeben sich direkt aus den gesetzlichen Vorgaben sowie aus den praktischen Anforderungen von Transportunternehmen. Im Einzelnen ergeben sich folgende funktionale Anforderungen:
-	•	Auslesen von Tachographendaten gemäß den EU-Verordnungen 2016/799 und 2021/1228
-	•	Unterstützung der seriellen Kommunikationsprotokolle des Tachographen (UART, K-Line)
-	•	Sichere Authentifizierung über Unternehmenskarte oder vorab registrierte Geräteidentitäten
-	•	Datenverschlüsselung während der Übertragung und ggf. Speicherung
-	•	Bereitstellung der Daten zur Anzeige, Archivierung oder Export
-	•	Plattformunabhängiger Datenzugriff, z. B. über Webanwendung oder mobile App
-	•	Energieeffizienter, mobiler Betrieb ohne stationäre Infrastruktur
-Diese Funktionen bilden den sogenannten „Minimal Viable Product“-Kern des Systems und müssen prioritär umgesetzt werden.
-\section{Nicht-funktionale Anforderungen (Mobilität, Benutzerfreundlichkeit, Kosten)}
-Nicht-funktionale Anforderungen betreffen qualitative Merkmale des Systems, die nicht direkt durch eine einzelne technische Funktion abgedeckt sind, aber für die Akzeptanz und den praktischen Einsatz entscheidend sind:
-	•	Mobilität: Kompakte Baugröße, Batteriebetrieb möglich
-	•	Benutzerfreundlichkeit: Einfache Bedienung auch für technisch nicht geschulte Anwender
-	•	Robustheit: Geeignet für den Außeneinsatz im Fahrzeugumfeld
-	•	Kosteneffizienz: Komponentenwahl abgestimmt auf niedrige Materialkosten
-	•	Modularität: Erweiterbarkeit durch Software oder zusätzliche Schnittstellen
-	•	Zukunftsfähigkeit: Berücksichtigung künftiger Tachograph-Generationen (z. B. Smart Tachographs Version 2)
+
+Die funktionalen Anforderungen leiten sich direkt aus dem Ziel eines mobilen, autarken Ausleseprototyps für digitale Tachographen ab und spiegeln den in Abstract und Einleitung beschriebenen Systemumfang wider.
+
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.30\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.15\textwidth}|}
+    \hline
+    \textbf{Anforderung} & \textbf{Begründung} & \textbf{Wichtigkeit} \\
+    \hline
+    Download von Massenspeicher- und Fahrerkartendaten & Kernzweck, um EU 2016/799 und 2021/1228 zu erfüllen. & hoch \\
+    \hline
+    RS-232-Interface & Standard-Port der Tachographen, robust im 24-V-Umfeld. & hoch \\
+    \hline
+    K-Line-Interface & Abwärtskompatibel zu ISO~9141/14230/Smart-Tacho~v1. & mittel \\
+    \hline
+    Autarker 24-V-Bordnetzbetrieb mit 5-V/3,3-V-Abzweigen & Keine externe Stromquelle, Voraussetzung für mobilen Einsatz. & hoch \\
+    \hline
+    Firmware mit Tachographenprotokollen auf ESP32 & Steuert Authentifizierung, Sequenzen, Datenextraktion. & hoch \\
+    \hline
+    \gls{tls} + Token-Authentifizierung zur App & Schutz vor Manipulation/Abhören personenbezogener Daten. & hoch \\
+    \hline
+    Lokale Pufferung mit Integritätsprüfung & Offline-tauglich, nachträgliche Übertragung möglich. & mittel \\
+    \hline
+    Status-/Fehlerfeedback & Erhöht Bedienbarkeit und Feld-Diagnose. & mittel \\
+    \hline
+    Plattformübergreifende UI & Zugriff ohne Spezialhardware für verschiedene Nutzer. & mittel \\
+    \hline
+    USB-C-Service/Debug & Vereinfacht Updates, Logging, Laboreinsatz. & niedrig \\
+    \hline
+  \end{tabularx}
+  \vspace{0.3\baselineskip}
+  \caption{Kernfunktionale Anforderungen des Ausleseprototyps}
+  \label{tab:funktionale-anforderungen}
+\end{table}
+\newpage
+\section{Nicht-funktionale Anforderungen}
+
+Die Qualitätseigenschaften orientieren sich an den Zielvorgaben für ein robustes, automotive-taugliches und sicherheitsbewusstes Auslesegerät.
+
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.30\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.15\textwidth}|}
+    \hline
+    \textbf{Anforderung} & \textbf{Begründung} & \textbf{Wichtigkeit} \\
+    \hline
+    \gls{emv}- und Transientenfestigkeit im 24-V-Bordnetz & Schutzstufen, Ferrite und Layoutregeln sichern störungsarmen Betrieb im Fahrzeugumfeld. & hoch \\
+    \hline
+    Zuverlässigkeit und Datenintegrität & Lokale Integritätsprüfungen und stabile Stromversorgung verhindern Datenverlust bei Downloads. & hoch \\
+    \hline
+    Sicherheit und Datenschutz & \gls{tls} und Token-Auth schützen personenbezogene Tachographendaten. & hoch \\
+    \hline
+    Interoperabilität & RS-232 und K-Line decken Smart-Tacho-Generationen und ISO-Standards ab. & hoch \\
+    \hline
+    Energieeffizienz & Abwärtswandler und 3,3-V-Versorgung minimieren Verlustleistung im Dauerbetrieb. & mittel \\
+    \hline
+    Wartbarkeit und Updatefähigkeit & USB-C-Debug und modularer Firmwareaufbau erleichtern Updates und Fehleranalyse. & mittel \\
+    \hline
+    Benutzerfreundlichkeit im Feld & Klare Statusanzeigen und plattformübergreifende UI reduzieren Bedienfehler. & mittel \\
+    \hline
+    Portabilität & Autarker, kompakter Aufbau erlaubt mobilen Einsatz ohne zusätzliche Infrastruktur. & mittel \\
+    \hline
+    Kostenbewusstsein & Nutzung verfügbarer Standardbausteine hält Prototyping- und Stückkosten gering. & niedrig \\
+    \hline
+  \end{tabularx}
+  \vspace{0.3\baselineskip}
+  \caption{Nicht-funktionale Anforderungen}
+  \label{tab:nichtfunktionale-anforderungen}
+\end{table}
+
+\newpage
 \section{Sicherheits- und Datenschutzanforderungen}
-Die Arbeit mit personenbezogenen und unternehmenskritischen Daten erfordert besondere Vorkehrungen im Design:
-	•	Vertraulichkeit: Schutz der ausgelesenen Daten vor unbefugtem Zugriff
-	•	Integrität: Sicherstellung, dass Daten vollständig und unverändert übertragen werden
-	•	Authentifizierung/Autorisierung: Zugriff nur durch berechtigte Nutzer oder Systeme
-	•	Speichersicherheit: Daten sollen entweder temporär im Gerät oder sicher extern (z. B. Cloud) abgelegt werden – Speicherung im Klartext im Gerät ist zu vermeiden
-	•	Datenschutzrechtliche Konformität: Umsetzung gemäß DSGVO und IT-Sicherheitsstandards
-Insbesondere TLS/SSL-Verschlüsselung, tokenbasierte Autorisierung und rollenbezogene Zugriffskontrolle (z. B. Fahrer vs. Unternehmen) werden als technische Mittel berücksichtigt.
+Die Tachographenverordnungen definieren technische Sicherheitsmechanismen für Zugriff, Speicherung und Integrität der Daten; zugleich gelten die Anforderungen der DSGVO, da Tachographen- und Fahrerkartendaten personenbezogene Informationen enthalten.\cite{eu-2016-799,eu-2021-1228,eu-gdpr-2016-679}
+Daraus ergeben sich für das Auslesegerät folgende Anforderungen:
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.34\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.15\textwidth}|}
+    \hline
+    \textbf{Anforderung} & \textbf{Begründung} & \textbf{Wichtigkeit} \\
+    \hline
+    Authentisierte und rollenbasierte Datenzugriffe; Auslesen nur bei gültiger Berechtigung. & Vorgaben zu Kartenrollen und Zugriffsschutz in den Tachographenverordnungen.\cite{eu-2016-799,eu-2021-1228} & hoch \\
+    \hline
+    Integritätsschutz der ausgelesenen Daten und Schutz vor Manipulation während Speicherung und Übertragung. & Anforderungen an Datenintegrität und Manipulationsschutz gemäß Anhang~IC.\cite{eu-2016-799,eu-2021-1228} & hoch \\
+    \hline
+    Vertraulichkeit durch geschützte Speicherung und verschlüsselte Übertragung personenbezogener Daten. & Datenschutzpflichten für personenbezogene Daten nach DSGVO.\cite{eu-gdpr-2016-679} & hoch \\
+    \hline
+    Datenminimierung und Speicherbegrenzung: nur notwendige Daten erfassen und nach Zweckerfüllung löschen. & Grundsätze der Datenminimierung und Speicherbegrenzung in der DSGVO.\cite{eu-gdpr-2016-679} & mittel \\
+    \hline
+  \end{tabularx}
+  \vspace{0.3\baselineskip}
+  \caption{Sicherheits- und Datenschutzanforderungen}
+  \label{tab:sicherheits-datenschutz-anforderungen}
+\end{table}
+
+\newpage
 \section{Technische Spezifikationen gemäß Normen}
-Die Kommunikation mit dem digitalen Tachographen muss normenkonform erfolgen. Relevante technische Richtlinien sind u. a.:
-	•	ISO 16844 (Teil 1–6): definiert die physikalischen und Protokoll-Schichten für Tachographenschnittstellen
-	•	ISO 9141-2: Kommunikationsprotokoll für K-Line-Diagnoseschnittstellen
-	•	Continental VDO Datenformate (z. B. DDD/XML-Files): strukturierte Fahrerdatenformate
-	•	EU-Verordnung 2016/799, Anhang 1C: Vorgaben zu Authentifizierungsprozessen, Protokollformaten und Sicherheitsmechanismen
-Die Umsetzung muss kompatibel mit diesen Spezifikationen erfolgen, um rechtssichere Daten zu gewährleisten.
-\section{Vergleich zu bestehenden Lösungen}
-Der Markt für mobile Tachographen-Auslesesysteme ist zwar vorhanden, jedoch meist auf professionelle Großlösungen oder fest verbaute Telematikeinheiten beschränkt. Kritische Einschränkungen der am Markt befindlichen Lösungen:
-\includegraphics[width=0.2\linewidth]{bilder/table.png}
+Die technischen Spezifikationen des Auslesegeräts leiten sich aus den EU-Vorgaben für digitale Tachographen sowie den einschlägigen Diagnoseprotokoll-Normen ab. Für die Umsetzung ergeben sich insbesondere folgende Anforderungen:
+\begin{itemize}
+  \item Unterstützung der in Anhang IC definierten Datenblöcke und Datenelemente für Massenspeicher- und Fahrerkartendaten. Das Auslesegerät muss diese Blöcke vollständig auslesen, interpretieren und in der erwarteten Struktur weitergeben.\cite{eu-2016-799}
+  \item Berücksichtigung der Erweiterungen des Smart Tachograph Version 2, insbesondere zusätzlicher Positions- und Ereignisdaten wie Grenzübertritte sowie Be- und Entladeereignisse. Diese Datensätze sind beim Download zu übernehmen und korrekt abzubilden.\cite{eu-2021-1228}
+  \item Implementierung der K-Line-Kommunikation nach ISO 9141-2 und ISO 14230-2, einschließlich Initialisierung, Halbduplex-Betrieb und typischer Datenrate von 10{,}4\,kbit/s. Dadurch wird die Kompatibilität zu bestehenden Tachographengenerationen sichergestellt.\cite{iso-9141-2,iso-14230-2}
+\end{itemize}

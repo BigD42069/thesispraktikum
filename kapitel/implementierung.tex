@@ -1,131 +1,109 @@
 \chapter{Implementierung}
+Dieses Kapitel beschreibt die prototypische Umsetzung der Hardware von den ersten THT-Aufbauten bis zur gefertigten Leiterplatte. Die Abschnitte dokumentieren die Fertigungsschritte, die Bestückung sowie die Stückliste, damit der Aufbau nachvollziehbar bleibt.
 
-\section{Hardwareaufbau und Prototyping}
-Dieses Kapitel dokumentiert den Übergang vom Schaltbild zur erprobten Hardware – inklusive Layoutprinzipien, Fertigung, Inbetriebnahme-Checkliste und Messmethodik.
+\section{THT-Prototypen}
+Für die ersten Funktionstests wurde ein THT-Aufbau auf Lochrasterplatine gewählt. Diese Vorgehensweise erlaubt es, zentrale Baugruppen frühzeitig zusammenzubringen und die Signalwege sowie die Versorgung unter realen Bedingungen zu prüfen, bevor das Layout der Leiterplatte festgelegt wird. Gleichzeitig lassen sich Komponenten schnell austauschen und das Verhalten der Schaltung schrittweise nachvollziehen.
 
-\subsection{THT-Prototypen}
-Zunächst habe ich vorgefertigte Komponenten ausgewählt und diese auf einer Lochrasterplatine verlötet. Dieses Vorgehen wurde gewählt, da es einerseits einfach umzusetzen war und andererseits schnelle Ergebnisse ermöglichte. Zudem konnten wir auf diese Weise die Funktionalität der einzelnen Bauteile überprüfen, bevor wir mit dem Design der Leiterplatte begonnen haben.
-\subsubsection{Prototyp 1}
-Zu Beginn wurde eine Variante realisiert, bei der sämtliche Bauteile fest verlötet wurden. Es zeigte sich jedoch, dass dieses Vorgehen für die Fehlerdiagnose nicht ideal war. Darüber hinaus wies der Prototyp anfänglich die Eigenschaft auf, dass er nur in Verbindung mit dem Labornetzteil zuverlässig funktionierte. Beim Betrieb am Tachographen startete der ESP nicht ordnungsgemäß, da der Tachograph nicht ausreichend Strom bereitstellte. Er schaltete in einen Sicherheitsmodus und stellte lediglich eine Spannung von weniger als 3 V zur Verfügung.
-\subsubsection{Prototyp 2}
-Der zweite Prototyp zeichnete sich durch einen modularen Aufbau aus, der es ermöglicht, alle Komponenten einfach an- und abzustecken. Dieses Konzept wurde durch den Einsatz von einfachen Jumper-Kabeln sowie weiblichen Dupont-Steckern realisiert. Selbst einzelne LEDs, Widerstände und Kondensatoren sind abnehmbar gestaltet. Mit dieser Variante gelang es uns, eine funktionsfähige Version zu entwickeln, bei der sämtliche Akku-Komponenten zuverlässig arbeiteten.
-\subsection{Leiterplatten-Design (EMV- und fertigungsorientiert)}
-\paragraph{Lagenaufbau.}
-Zweilagige Leiterplatte (2-Lagen), 1\,oz Cu. \emph{Top:} Leistungs- und HF-kritische Knoten
-(MP1584-Power-Loop, SW-Knoten, USB-Differenzpaar).
-\emph{Bottom:} großflächige GND-Plane mit möglichst wenigen Unterbrechungen und kontrollierten Rückstrompfaden.
+\subsection{Monolitischer Prototyp}
+Der monolitische Prototyp war der erste Anlauf für einen funktionstüchtigen Aufbau. Im Laborbetrieb am Netzteil lief der Aufbau stabil, im Feldtest im Lkw traten jedoch Probleme auf, sodass der ESP32 nicht zuverlässig bootete. Als wahrscheinliche Ursache hat sich eine ungünstige Masseverbindung gezeigt, die unter realen Störbedingungen zu Instabilitäten führte. Zudem wurde dieser Prototyp ohne zusätzliche Kondensatoren oder spezifische Sicherungen aufgebaut, was die Robustheit im Bordnetz weiter eingeschränkt hat.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\linewidth]{bilder/monolitisch.png}
+  \caption{Monolitischer Aufbau des ersten THT-Prototypen.}
+  \label{fig:implementierung-monolitisch}
+\end{figure}
 
-\paragraph{Power-Island.}
-Eingang (TVS, Q2, FB1) $\rightarrow$ MP1584 $\rightarrow$ L/Diode/$C_\text{OUT}$ in einem kompakten Rechteck anordnen.
-\emph{Ziel:} minimale Schleifenfläche der kritischen Stromschleife
-\[
-\text{VIN} \rightarrow \text{SW} \rightarrow \text{D} \rightarrow \text{GND} \rightarrow C_\text{OUT} \rightarrow \text{VIN}.
-\]
+\subsection{Modularer Prototyp}
+Aufgrund der Erfahrungen mit dem ersten Aufbau wurde ein zweiter Prototyp in modularer Form gelötet. Dabei wurde die Masseführung gezielt verbessert und der Aufbau so gestaltet, dass einzelne Komponenten über Steckverbinder ein- oder ausgeklinkt werden können. Kondensatoren und Schutzbauteile lassen sich so bedarfsgerecht zuschalten, was die Fehlersuche erleichtert. Der modulare Prototyp zeigte im Lkw-Test ein stabiles Verhalten ohne die zuvor beobachteten Boot-Probleme.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.35\linewidth]{bilder/Prototyp1.png}
+  \caption{Modularer Steckaufbau des zweiten THT-Prototypen.}
+  \label{fig:implementierung-modular}
+\end{figure}
 
-\paragraph{Signaltrennung.}
-Schnittstellen-Transceiver (RS-232, K-Line) nahe den jeweiligen Steckverbindern platzieren.
-Die Logikseite (3{,}3\,V) erhält an RX/TX kurze Leiterbahnen und Serienwiderstände (22–68\,\(\Omega\)) zur Dämpfung von Überschwingern (Ringing).
+\section{Pcb Prototyp}
 
-\paragraph{ESP32-Antenne.}
-Kupfer-\emph{Keep-Out} unter dem Antennenbereich des ESP32-Moduls sowie \(\approx\)15\,mm Freiraum seitlich vor der Modulantenne (Randmontage bevorzugen).
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{bilder/pcbvorne.png}
+  \end{minipage}
+  \begin{minipage}[b]{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{bilder/pcbhinten.png}
+  \end{minipage}
+  \caption{Heck- und Frontansicht des Leiterplattendesigns.}
+  \label{fig:leiterplatte-beispiel}
+\end{figure}
 
-\paragraph{USB-Datenführung.}
-Differenzpaarführung mit Zielimpedanz \(Z_\text{diff}=90\,\Omega\); Längen- und Skew-Differenz $<\,$150\,mil.
-Keine Stichleitungen/T-Abgriffe; ESD-Arrays unmittelbar an der Buchse platzieren.
 
-\paragraph{Entkopplung.}
-Pro IC-VDD ein 0{,}1\,\(\mu\)F-Kondensator (X7R, 0402/0603) mit $<\,$2\,mm Leiterlänge zum Pin;
-pro Subsystem 10–22\,\(\mu\)F Bulk (X7R) zur Lastsprungpufferung.
-
-\paragraph{Masseführung.}
-Single-Point-Connection zwischen Leistungs- und Digitalmasse (Massestern nahe $C_\text{OUT}$).
-Thermische Anbindung des MP1584 über Vias-in-Pad (SOIC-8EP) zur Wärmeabfuhr.
-
-\paragraph{Mechanik.}
-Alle I/O-Steckverbinder entlang einer Platinenkante vorsehen; Befestigungsbohrungen in der Nähe massiver Bauteile (Induktivität, Steckverbinder), um mechanische Belastungen zu minimieren.
-
-\subsection{Stückliste (BOM) – Kernkomponenten}
-\begin{itemize}
-  \item \textbf{U4 MP1584} (3\,A Step-Down) + L 22–33\,\(\mu\)H, Schottky $\ge$ 3\,A/40\,V, $C_\text{IN}\ge 10\,\mu$F, $C_\text{OUT}\ge 2\times 22\,\mu$F.
-  \item \textbf{U1 L9637D} (ISO-9141 K-Line-Transceiver) + TVS an K, $R_\text{PU}\approx 510\,\Omega$ nach $V_\text{BAT}$.
-  \item \textbf{U2 MAX3232} (RS-232-Pegelwandler) + 4\,$\times$\,100\,nF Charge-Pump-Kondensatoren.
-  \item \textbf{ESP32-S3-WROOM-1} + 3{,}3-V-Versorgung/Entkopplung (0{,}1\,\(\mu\)F je VDD, 10–22\,\(\mu\)F Bulk).
-  \item \textbf{U3 USBLC6-2SC6} (USB-ESD-Schutz), \textbf{FB1} 600\,\(\Omega\)@100\,MHz, \textbf{Q2} P-MOSFET (Reverse-Polarity/Ideal-Diode), \textbf{D3} TVS (Load-Dump).
-\end{itemize}
-
-\subsection{Prototypenfertigung und Bestückung}
+\subsection{Prototypenfertigung, Bestückung und \gls{bom}}
 \paragraph{Fertigung.}
-Standard-FR4, min. Leiterbahnbreite/-abstand 6/6\,mil (oder konservativer).
-Lötstopp dunkel (bessere optische Kontrolle), Oberflächenfinish HAL/ENIG nach Verfügbarkeit.
+Standard-FR4, min. Leiterbahnbreite/-abstand 6/6\,mil oder konservativer.
+Lötstopp dunkel für bessere optische Kontrolle, Oberflächenfinish HAL/ENIG nach Verfügbarkeit.
 
 \paragraph{Bestückungsreihenfolge.}
-(1) kleinste/kritische Bauteile (ESD-Arrays, 0402-MLCC), (2) Leistungsstufe (MP1584, Induktivität, Diode, Bulk-Caps),
-(3) Steckverbinder und Mechanik.
+Zuerst kleinste und kritische Bauteile wie ESD-Arrays und 0402-MLCC, danach die Leistungsstufe mit MP1584, Induktivität, Diode und Bulk-Caps, zuletzt Steckverbinder und Mechanik.
 
 \paragraph{Vorinspektion.}
-Optische Kontrolle (Lunker, Lotbrücken, Abstand am SW-Knoten), DMM-Messung auf Kurzschluss
+Optische Kontrolle auf Lunker, Lotbrücken und Abstand am SW-Knoten, DMM-Messung auf Kurzschluss
 zwischen 5\,V/GND und 3{,}3\,V/GND.
 
-\subsection{Inbetriebnahme-Checkliste (Bring-Up)}
-\paragraph{Netzteil-Vortest (ohne \(\mu\)C).}
-\begin{enumerate}
-  \item Speisen mit einstellbarem Labor-NT (Strombegrenzung 100\,mA).
-  \item EN-Pin des MP1584 auf Low $\Rightarrow$ Ruhestrom prüfen.
-  \item EN aktivieren: 5{,}0\,V verifizieren; Ripple mit Oszilloskop (20\,MHz-Bandbreite, \emph{ground spring}) messen, Ziel \(V_{pp}<30\text{–}50\,\mathrm{mV}\).
-  \item Laststaffelung 0{,}1\,A $\rightarrow$ 0{,}5\,A $\rightarrow$ 1{,}0\,A; Temperatur von MP1584/Induktor beobachten ($<70^\circ$C).
-\end{enumerate}
-
-\paragraph{3{,}3-V-Ebene \& ESP32.}
-\begin{enumerate}
-  \item 3{,}3\,V messen; Reset-Schaltung prüfen.
-  \item Minimal-Firmware flashen (UART/USB-CDC \emph{alive}, LED-Blinktest).
-  \item WLAN-Peakstrom gezielt provozieren (z.\,B. Ping-Traffic); Transienten auf dem 3{,}3-V-Rail beobachten.
-\end{enumerate}
-
-\paragraph{RS-232-Strecke (MAX3232).}
-\begin{enumerate}
-  \item Loopback (T1OUT\,$\leftrightarrow$\,R1IN) setzen; mit 115200\,Bd testen.
-  \item Externer PC-Adapter: Byte-Fehlerquote \(\approx 0\); korrekte Invertierung prüfen.
-\end{enumerate}
-
-\paragraph{K-Line (L9637D).}
-\begin{enumerate}
-  \item Dummy-Last an K (1\,k\(\Omega\) nach $V_\text{BAT}$), Idle-Level \(\approx V_\text{Bord}\) prüfen.
-  \item \emph{Fast-Init} (25\,ms Low) erzeugen; Flanken (\(\sim 2\,\mu\)s) und Pegel oszilloskopisch verifizieren.
-  \item Störfestigkeit: Puls-Injection (z.\,B. 1\,\(\mu\)s Burst) $\Rightarrow$ keine Fehltrigger am RX.
-\end{enumerate}
-
-\paragraph{USB-C.}
-\begin{enumerate}
-  \item Enumeration am PC; D+/D−-Signalform (90\,\(\Omega\) diff.) kontrollieren.
-  \item ESD-Schnelltest (\(\pm 8\) kV Kontakt) am USB-Shield – keine Resets (nur mit geeigneter Ausrüstung/Laborfreigabe).
-\end{enumerate}
-
-\subsection{Messmethodik und Bewertung}
-\paragraph{Versorgungsripple.}
-Messspitze mit \emph{spring ground}, 20\,MHz-Bandlimit; Messpunkt direkt an $C_\text{OUT}$.
-Dokumentation von \(V_{pp}\) und ggf.\ Spektrum (FFT).
-
-\paragraph{Regelkreis-Stabilität.}
-Lastsprünge 0{,}1\,$\rightarrow$\,0{,}5\,A; Überschwingen und Abklingzeit beobachten
-(Ziel: \(\,t_\text{settle}<200\,\mu\mathrm{s}\) auf \(\pm 2\,\%\)).
-
-\paragraph{Schnittstellensignale.}
-UART-Augendiagramm (RS-232 nach MAX3232), K-Line-Pegel relativ zu $V_\text{BAT}$; Bitzeiten prüfen
-(10{,}4\,kBd $\Rightarrow$ 96\,\(\mu\)s/Bit).
-
-\paragraph{Thermik.}
-IR-Kamera oder Thermoelement; \emph{steady state} nach 10\,min bei 0{,}5\,A Last dokumentieren.
-
-\paragraph{EMV-Vorkompatibilität.}
-Nahfeldsonde über dem SW-Knoten; Oberwellen bei \(f_S\) und \(n\cdot f_S\) bewerten; falls erforderlich Snubber ergänzen (R–C 5–22\,\(\Omega\) / 330–680\,pF).
-
-\subsection{Normbezug und Konformitätsaspekte}
-\paragraph{Schnittstellen.}
-ISO 9141/14230 (K-Line), RS-232 (TIA/EIA-232-F).
-
-\paragraph{Automotive-Elektrik/EMV.}
-ISO 7637-2 / ISO 16750-2 (Transiente), ISO 10605 (ESD), CISPR 25 (Störaussendung) wurden im Design berücksichtigt (TVS, Filter, Layoutführung).
-
-\paragraph{Projektkontext.}
-Die Architekturauswahl und der Prototypenaufbau sind konsistent zu den in Kapitel~3 formulierten Anforderungen und den in Kapitel~2 beschriebenen Komponenten.
+\begin{table}[htbp]
+  \centering
+  \caption{Stückliste des Prototyps als \gls{bom}}
+  \label{tab:bom-prototyp}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.32\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.12\textwidth}|}
+    \hline
+    \textbf{Bauteil} & \textbf{Wert} & \textbf{Anzahl} \\
+    \hline
+    C1 & 0,1 µ\gls{symb:farad} / 16 V Keramik X7R & 1 \\ \hline
+    C2, C15, C18, C19, C20 & 100 n\gls{symb:farad} X7R ≥16 V & 5 \\ \hline
+    C3 & 10 µ\gls{symb:farad} / 16 V MLCC X7R & 1 \\ \hline
+    C4, C21 & 47 n\gls{symb:farad} X7R ≥6,3 V & 2 \\ \hline
+    C5 & 10 µ\gls{symb:farad} X7R ≥6,3 V & 1 \\ \hline
+    C6 & 0,1 µ\gls{symb:farad} X7R ≥6,3 V & 1 \\ \hline
+    C7 & 10 n\gls{symb:farad} X7R ≥35 V & 1 \\ \hline
+    C8 & 0,1 µ\gls{symb:farad} / 35 V X7R & 1 \\ \hline
+    C9 & 1 µ\gls{symb:farad} X7R ≥6,3 V & 1 \\ \hline
+    C10 & 470 µ\gls{symb:farad} Elko ≥35 V & 1 \\ \hline
+    C12 & 1 n\gls{symb:farad} X7R ≥10 V & 1 \\ \hline
+    C13 & 100 µ\gls{symb:farad} / 35 V Low ESR & 1 \\ \hline
+    C14 & 10 µ\gls{symb:farad} / 50 V X7R & 1 \\ \hline
+    C16 & 100 n\gls{symb:farad} X7R ≥6,3 V & 1 \\ \hline
+    C17 & 1 n\gls{symb:farad} X7R ≥35 V & 1 \\ \hline
+    D1 & Schottky 1 A, 40–60 V & 1 \\ \hline
+    D2 & SMBJ35A & 1 \\ \hline
+    F1 & 0,9 A Sicherung & 1 \\ \hline
+    FB1 & 600 \gls{symb:ohm} @ 100 MHz Ferritperle & 1 \\ \hline
+    IC1 & L9637D & 1 \\ \hline
+    J1 & 2×3 Stiftleiste 2,54 mm & 1 \\ \hline
+    L1 & 10 \gls{symb:microhenry} Isat ≥1,5–2 A <100 m\gls{symb:ohm} & 1 \\ \hline
+    LED1 & blau & 1 \\ \hline
+    LED2 & rot & 1 \\ \hline
+    LED3 & gelb & 1 \\ \hline
+    Q1 & IPD90P03P4L-04 & 1 \\ \hline
+    R1, R2, R3 & 330 \gls{symb:ohm} & 3 \\ \hline
+    R4 & 6,25 k\gls{symb:ohm} 0805 & 1 \\ \hline
+    R5 & 10 k\gls{symb:ohm} 0805 & 1 \\ \hline
+    R6 & 5,1 k\gls{symb:ohm} 0805 & 1 \\ \hline
+    R7, R11 & 100 k\gls{symb:ohm} 0805 & 2 \\ \hline
+    R8 & 2,00 k\gls{symb:ohm} 0805 & 1 \\ \hline
+    R9 & 1 M\gls{symb:ohm} 0805 & 1 \\ \hline
+    R10 & 15 k\gls{symb:ohm} 0805 & 1 \\ \hline
+    R13 & 100 k\gls{symb:ohm} 0805 & 1 \\ \hline
+    R14 & 470 \gls{symb:ohm} 0805 & 1 \\ \hline
+    R15, R16 & 10 k\gls{symb:ohm} 0805 & 2 \\ \hline
+    U1 & ESP32-S3-WROOM-1 & 1 \\ \hline
+    U2 & MP1584 & 1 \\ \hline
+    U4 & SMAJ35CA & 1 \\ \hline
+    U5 & MAX3232 & 1 \\ \hline
+  \end{tabularx}
+  \vspace{0.5\baselineskip}
+  \begin{minipage}{\textwidth}
+    \footnotesize
+    \textit{Legende:} C = Kondensator, D = Diode, F = Sicherung, FB = Ferritperle, IC/U = Integrierter Schaltkreis/Modul, J = Steckverbinder, L = Induktivität, LED = Leuchtdiode, Q = Transistor/MOSFET, R = Widerstand.
+  \end{minipage}
+\end{table}
