@@ -1,30 +1,27 @@
 \chapter{Systementwurf}
 
-\noindent Dieses Kapitel beschreibt den Systementwurf der Hardware für das Auslesegerät. Die Architektur gliedert sich in Energiepfad mit Schutzstufen, den Mikrocontroller-Kern, die Schnittstellenanbindung sowie Maßnahmen zur Signalintegrität und \gls{emv}. Die folgenden Unterabschnitte erläutern die einzelnen Blöcke von der Speisung bis zur Protokollebene.
-\section{Schaltungsaufbau und Stromversorgung}
-Der Schwerpunkt dieses Abschnitts liegt auf dem Energiepfad und den Schutz- sowie Layoutmaßnahmen, die den stabilen Betrieb im Bordnetz sicherstellen. Dazu zählen die Absicherung des Eingangs, die Spannungswandlung auf 3,3\,V und ein durchgängiges \gls{emv}-Konzept für geringe Störeinkopplung.
+\noindent Dieses Kapitel beschreibt den Systementwurf der Hardware für das Auslesegerät und bezieht sich auf den PCB-Prototypen. 
+\section{Schaltungsaufbau}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\linewidth]{bilder/schaltplan.png}
-  \caption{Schaltplan des Systems.}
+  \caption{Schaltplan des PCB Prototypen.}
   \label{fig:grundlagen-schaltplan}
 \end{figure}
 
 \subsection{Bordnetzeingang und Schutzstufen}
-Der Bordnetzeingang wird zunächst über die Sicherung F1 abgesichert und durch den P-Kanal-MOSFET Q1 vom Typ IPD90P03P4L-04 verpolsicher ausgeführt. Eine \gls{tvs-gloss}-Diode D2 vom Typ SMBJ35A begrenzt transiente Überspannungen, bevor die Spannung in den Schaltreglerzweig geführt wird. Bulk- und HF-Abblockung erfolgt über C10 und C13 sowie C8 und C14. Eine Ferritperle FB1 dämpft hochfrequente Störanteile. Die 3,3-V-Schiene erzeugt der Abwärtsregler MP1584 mit L1 und der Schottky-Diode D1 und versorgt damit ESP32, MAX3232 und die restliche Logik.\cite{infineon-ipd90p03p4l-04,vishay-smbj}.
+Der Bordnetzeingang wird zunächst über die Sicherung F1 abgesichert und durch den P-Kanal-MOSFET Q1 vom Typ IPD90P03P4L-04 verpolsicher ausgeführt. Eine \gls{tvs-gloss}-Diode D2 vom Typ SMBJ35A begrenzt transiente Überspannungen, bevor die Spannung in den Schaltreglerzweig geführt wird. Bulk- und HF-Abblockung erfolgt über C10 und C13 sowie C8 und C14. Eine \gls{ferritperle-gloss} FB1 dämpft hochfrequente Störanteile. Die 3,3-V-Schiene erzeugt der Abwärtsregler MP1584 mit der Spule L1 und der \gls{schottky-gloss}-Diode D1 und versorgt damit ESP32, MAX3232 und die restliche Logik.
 
 \subsection{Masse- und \gls{emv}-Konzept}
-Das Massekonzept basiert auf einer zusammenhängenden Massefläche mit kurzen Rückstrompfaden für die Versorgungskreise. Kritische Schaltregler-Stromschleifen um MP1584, L1 und D1 werden kompakt gehalten, während lokale Abblockkondensatoren direkt an den IC-Versorgungen sitzen. \gls{tvs-gloss}-Schutz an externen Leitungen über D2 und U4 sowie die Ferritperle FB1 reduzieren ESD- und HF-Einträge aus dem Bordnetz.\cite{vishay-smbj,littelfuse-smaj}.
+Das Massekonzept basiert auf einer zusammenhängenden Massefläche mit kurzen Rückstrompfaden für die Versorgungskreise. Kritische Schaltregler-Stromschleifen um MP1584, L1 und D1 werden kompakt gehalten, während lokale Abblockkondensatoren direkt an den IC-Versorgungen sitzen. \gls{tvs-gloss}-Schutz an externen Leitungen über D2 und U4 sowie die \gls{ferritperle-gloss} FB1 reduzieren \gls{esd-gloss}- und HF-Einträge aus dem Bordnetz.
 
 \section{Schnittstellen- und Pegelkonzepte}\label{subsec:interfaces}
-Dieser Abschnitt beschreibt die externen Kommunikationswege und die dafür notwendige Pegelanpassung. Im Fokus stehen RS-232, K-Line und die Service-Schnittstelle, damit die Kommunikation im Fahrzeugumfeld zuverlässig bleibt und die Logikpegel des Controllers geschützt sind.
-
 \subsection{RS-232 über MAX3232}
 Die RS-232-Anbindung erfolgt über einen Pegelwandler, der die UART-Signale des ESP32 auf RS-232-Pegel umsetzt. Die erforderlichen $\pm$-Spannungen entstehen über integrierte Ladungspumpen mit passenden Kondensatoren und lokaler Entkopplung. Die Leitungen werden auf einen externen Anschluss geführt, wodurch eine robuste Verbindung im Bordnetzumfeld möglich ist.
 
 \subsection{K-Line über L9637D}
 Für die K-Line wird ein Transceiver eingesetzt, der die UART-Signale des ESP32 an die K-Leitung koppelt. Der Leitungszweig ist mit \gls{tvs-gloss}-Schutz und einem Serienwiderstand gegen Transienten und Störeinkopplungen abgesichert. Die Versorgung und Stabilisierung des Transceivers erfolgt über lokale Abblockung.
 
-\subsection{USB-C-Geräteschnittstelle}
-Die USB-C-Buchse dient als Service- und Debugschnittstelle zum ESP32. D+ und D- sind direkt mit den USB-Pins des Mikrocontrollers verbunden, während der CC-Pin über einen Pulldown die Gerätemodus-Erkennung sicherstellt. Die Schirmung ist über ein RC-Glied an Masse angebunden, um \gls{emv}-Störungen zu reduzieren. Im PCB-Prototyp ist die USB-C-Schnittstelle jedoch nicht als fester Steckverbinder vorgesehen; das Flashen erfolgt über Pogopins, sodass für Endnutzer kein USB-C-Anschluss verfügbar ist.
+\subsection{USB-C-Schnittstelle}
+USB-C dient als Service- und Debugschnittstelle. D+ und D- sind direkt mit den USB-Pins des Mikrocontrollers verbunden, während der CC-Pin über einen Pulldown die Gerätemodus-Erkennung sicherstellt. Die Schirmung ist über ein RC-Glied an Masse angebunden, um \gls{emv}-Störungen zu reduzieren. Im PCB-Prototyp ist die USB-Schnittstelle jedoch nicht als fester Steckverbinder vorgesehen. Das Flashen erfolgt über Pogopins, sodass für Endnutzer kein USB-Anschluss verfügbar ist.

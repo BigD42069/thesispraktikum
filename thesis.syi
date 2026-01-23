@@ -2,9 +2,9 @@
 \begin{theglossary}\glossaryheader
 \glsgroupheading{S}\relax \glsresetentrylist %
 \glossentry{symb:farad}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{23}}}%
+		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \glossentry{symb:microhenry}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{23}}}%
+		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \glossentry{symb:ohm}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{23}}}%
+		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \end{theglossary}\glossarypostamble

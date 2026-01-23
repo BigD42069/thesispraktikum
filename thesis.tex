@@ -111,17 +111,6 @@
 % Aufgabenstellung
 %\input{kapitel/implementierung}
 
-% Abstract
-\makeabstract{
- Diese Arbeit beschreibt die Entwicklung eines universellen Auslesegeräts für digitale Tachographen, das RS-232- und K-Line-Schnittstellen nach ISO 9141/14230 unterstützt. Ziel ist ein robustes, Automotive-taugliches System zur sicheren und zuverlässigen Datenerfassung. Die Hardware basiert auf einem ESP32-S3-Mikrocontroller, gespeist aus dem 24 V-Bordnetz über einen MP1584-Abwärtswandler und lokale 3,3 V-Regler. Schutzmechanismen wie \gls{tvs}-Dioden, Ferritfilter und MOSFET-Verpolschutz erhöhen die Störfestigkeit gegenüber Transienten und elektromagnetischen Einflüssen.
-Der Prototyp wurde als zweilagige Leiterplatte mit \gls{emv}-optimiertem Layout gefertigt und erfolgreich in Bezug auf Ripple, Signalqualität, thermisches Verhalten und \gls{emv}-Vorkompatibilität validiert. Auf Softwareseite implementiert eine modulare Firmware die Tachographenprotokolle und bietet sichere Kommunikation über \gls{tls}-Verschlüsselung und Token-Authentifizierung.
- Eine plattformübergreifende Anwendung (Android, iOS, Linux, macOS, Web, Windows) ergänzt die Hardware und stellt die ausgelesenen Daten anschaulich dar. Das System erfüllt Anforderungen an Zuverlässigkeit, Sicherheit und Interoperabilität und bildet eine Grundlage für Erweiterungen wie Cloud-Integration und \gls{ota}-Updates.
-}{
-This thesis presents the design of a universal tachograph reader supporting RS-232 and K-Line (ISO 9141/14230) interfaces. The goal is a robust, automotive-grade platform for reliable and secure data acquisition. The system is powered by a 24 V supply via an MP1584 buck converter and local 3.3 V regulation, with protection circuitry including \gls{tvs} diodes, ferrite filters, and a MOSFET-based reverse polarity guard for resilience against automotive transients and EMI.
-The prototype was built on a two-layer PCB with \gls{emv}-conscious layout and validated through ripple, signal integrity, thermal, and pre-compliance \gls{emv} testing. A modular firmware stack supports tachograph communication and secure \gls{tls}- and token-based transmission.
-A cross-platform software suite (Android, iOS, Linux, macOS, Web, Windows) complements the hardware and presents the extracted data. The solution meets key requirements for reliability, security, and interoperability, providing a foundation for future features such as cloud services and \gls{ota} updates.
-}
-
 % Inhaltsverzeichnis (Schalter `compact' sorgt für einfachen Zeilenabstand)
 \maketoc[compact]
 

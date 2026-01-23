@@ -1,22 +1,23 @@
 \babel@toc {ngerman}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1}{\ignorespaces Darstellung eines digitalen Tachographen.}}{7}{figure.caption.6}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Beispielhafte Visualisierung des ESP32-S3-WROOM-1 Moduls.}}{8}{figure.caption.7}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Darstellung eines MAX3232.}}{9}{figure.2.3}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Visualisierung des L9637d.}}{9}{figure.2.4}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Darstellung eines MP1584 step-down Reglers.}}{10}{figure.2.5}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Darstellung eines digitalen Tachographen.}}{5}{figure.caption.4}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Darstellung eines ESP32-S3-DevKitC-1.}}{7}{figure.caption.5}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Darstellung eines MAX3232 und dessen Schaltplan.}}{8}{figure.caption.6}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Darstellung eines L9637D und dessen Schaltplan.}}{8}{figure.caption.7}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Darstellung eines MP1584EN Step-Down Reglers und dessen Schaltplan.}}{9}{figure.caption.8}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6}{\ignorespaces Schaltplan des Systems.}}{17}{figure.caption.11}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Schaltplan des PCB Prototypen.}}{14}{figure.caption.12}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7}{\ignorespaces Monolitischer Aufbau des ersten THT-Prototypen.}}{21}{figure.caption.12}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Modularer Steckaufbau des zweiten THT-Prototypen.}}{21}{figure.caption.13}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Heck- und Frontansicht des Leiterplattendesigns.}}{22}{figure.caption.14}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Darstellung des Breadboard-Aufbaus mit farbig markierten Komponenten.}}{16}{figure.caption.13}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Monolitischer Aufbau des ersten THT-Prototypen.}}{17}{figure.caption.14}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Modularer Steckaufbau des zweiten THT-Prototypen.}}{18}{figure.caption.15}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Heck- und Frontansicht des Leiterplattendesigns.}}{19}{figure.caption.16}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {10}{\ignorespaces Hauptmenu der Applikation und Einblick ins Statistikenauswahlmenu.}}{25}{figure.caption.22}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Kalenderansicht der App und Detailansicht eines einzelnen Tages.}}{26}{figure.caption.23}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Verbindugsmenu und Dateiübertragung}}{27}{figure.caption.24}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Hauptmenu der Applikation und Einblick ins Statistikenauswahlmenu.}}{23}{figure.caption.18}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Kalenderansicht der App und Detailansicht eines einzelnen Tages.}}{24}{figure.caption.19}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Verbindugsmenu und Dateiübertragung}}{25}{figure.caption.20}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

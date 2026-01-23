@@ -7,8 +7,8 @@ Die Anwendung ist als clientseitige, mobile Applikation konzipiert, die die Komm
 Die Anwendung fungiert als Client für das ESP32-basierte Auslesegerät. Die Übertragung der Tachographendateien im \code{.ddd}-Format erfolgt über \gls{ble}. Nach dem Download werden die Dateien lokal geparst und in eine strukturierte Datenrepräsentation überführt, die die spätere Auswertung und Visualisierung ermöglicht.
 Die strukturierte Repräsentation bildet die Grundlage für Filter, Zeitansichten, Statistiken und Kartenansichten, sodass die Ergebnisse in unterschiedlichen Perspektiven konsistent dargestellt werden können.
 
-Im aktuellen Prototyp liegt der Schwerpunkt auf der lokalen Verarbeitung ohne serverseitige Persistenz. Eine Anbindung an Nutzerkonten und Datenbanken ist als Erweiterung vorgesehen und wird im Abschnitt zu den geplanten Erweiterungen aufgegriffen.
-
+Im aktuellen Prototyp liegt der Schwerpunkt auf der lokalen Verarbeitung ohne serverseitige Persistenz. Eine Anbindung an Nutzerkonten und Datenbanken ist als Erweiterung vorgesehen.
+\newpage
 \section{Funktionen der App}
 Die folgenden Screenshots veranschaulichen den aktuellen Stand der Applikation und ordnen die wichtigsten Funktionen den Ansichten zu.
 \begin{figure}[H]
@@ -73,6 +73,3 @@ Die Kalenderansicht ist die Standarddarstellung; alternativ steht eine Listenans
   \label{fig:app-ui-grid3}
 \end{figure}
 Das Verbindungsmenü bildet die Übertragung der Tachographendateien im \code{.ddd}-Format vom ESP32 über \gls{ble} ab. In der aktuellen Testumgebung übernimmt eine Demo-Software die Dateiübertragung, die eine BLE-Implementierung bereitstellt und eine \code{.ddd}-Datei aus dem Dateisystem übergibt. Nach dem Download werden die Daten geparst und strukturiert visualisiert. Zusätzlich zeigt die Anwendung technische Daten des Tachographen wie Hersteller, Seriennummer und Genehmigungsnummern sowie eine Downloadübersicht mit Kennzeichen des Fahrzeugs, Zeitpunkt des Downloads, aufgezeichnetem Zeitraum und Informationen zum letzten Download. Eine Systembenachrichtigung erinnert daran, sobald gesetzlich eine erneute Auslesung erforderlich ist.
-
-\section{Geplante Erweiterungen}
-Geplant sind ein Nutzerkonto mit Anbindung an eine Datenbank zur Zuordnung und zum Abruf von \code{.ddd}-Dateien sowie eine Suchfunktion für gezielte Abfragen. Zusätzlich soll das manuelle Hinzufügen von Tachographendateien ohne ESP32 möglich werden. Weitere Punkte sind Designanpassungen, eine integrierte Bedienungsanleitung und zusätzliche Hilfetexte.

@@ -150,8 +150,7 @@
 % bibliography settings
 \RequirePackage[
   style=numeric,  % IEEE style
-  sorting=nyt,
-  sortcites,      % sort references by appearance
+  sorting=none,
   backend=biber   % use modern bibliography backend
 ]{biblatex}
 

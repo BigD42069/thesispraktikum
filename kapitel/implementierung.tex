@@ -1,11 +1,19 @@
 \chapter{Implementierung}
-Dieses Kapitel beschreibt die prototypische Umsetzung der Hardware von den ersten THT-Aufbauten bis zur gefertigten Leiterplatte. Die Abschnitte dokumentieren die Fertigungsschritte, die Bestückung sowie die Stückliste, damit der Aufbau nachvollziehbar bleibt.
+\section{Breadboard-Aufbau}
+Zu Beginn wurden alle Komponenten gemeinsam auf einem Breadboard verbunden, um grundlegende Funktionen schnell zu prüfen. Dabei standen die Kommunikation zwischen ESP32 (Blau) und MAX3232 (Gelb) sowie das Ansteuern der Status-LEDs (Rot) im Fokus. Der L9637D (Lila) war zwar verbunden, konnte zu diesem Zeitpunkt jedoch nicht zuverlässig in Betrieb genommen werden, weil kein Labornetzteil für die erforderliche Versorgung zur Verfügung stand. Feldtests fanden in dieser Phase nicht statt, da der Aufbau zu unhandlich und damit für den Fahrzeugeinsatz ungeeignet war.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{bilder/breadboard.jpg}
+  \caption{Darstellung des Breadboard-Aufbaus mit farbig markierten Komponenten.}
+  \label{fig:implementierung-breadboard}
+\end{figure}
 
 \section{THT-Prototypen}
-Für die ersten Funktionstests wurde ein THT-Aufbau auf Lochrasterplatine gewählt. Diese Vorgehensweise erlaubt es, zentrale Baugruppen frühzeitig zusammenzubringen und die Signalwege sowie die Versorgung unter realen Bedingungen zu prüfen, bevor das Layout der Leiterplatte festgelegt wird. Gleichzeitig lassen sich Komponenten schnell austauschen und das Verhalten der Schaltung schrittweise nachvollziehen.
+Für die ersten Funktionstests wurde ein THT-Aufbau auf Lochrasterplatine gewählt. Die Komponenten wurden dabei mit Drähten verbunden, die an die jeweiligen Pins gelötet wurden. Als gemeinsame Masse dient eine Masseschiene auf der Unterseite der Platine, die aus einem langen Draht besteht und an mehreren Pads verlötet wurde.
 
 \subsection{Monolitischer Prototyp}
-Der monolitische Prototyp war der erste Anlauf für einen funktionstüchtigen Aufbau. Im Laborbetrieb am Netzteil lief der Aufbau stabil, im Feldtest im Lkw traten jedoch Probleme auf, sodass der ESP32 nicht zuverlässig bootete. Als wahrscheinliche Ursache hat sich eine ungünstige Masseverbindung gezeigt, die unter realen Störbedingungen zu Instabilitäten führte. Zudem wurde dieser Prototyp ohne zusätzliche Kondensatoren oder spezifische Sicherungen aufgebaut, was die Robustheit im Bordnetz weiter eingeschränkt hat.
+Der monolitische Prototyp war der erste Anlauf für einen funktionstüchtigen Aufbau. Er wurde mit einer sehr grundlegenden Firmware in Betrieb genommen, die eine einfache Kommunikation mit dem Tachographen ermöglichen sollte. Die Bedienung erfolgte über ein simples Flutter-Tool mit wenigen Schaltflächen, über die die Übertragung gestartet wurde. Die LEDs waren fest über einen Vorwiderstand eingebunden, wobei die Power-LED direkt am Versorgungskreis hing und die Bluetooth- sowie die Arbeits-LED an Pins des ESP32 angeschlossen waren. Im Laborbetrieb am Netzteil funktionierte die Bluetooth-Verbindung zuverlässig, im Feldtest im Lkw trat jedoch eine Bootschleife auf und der ESP32 startete nicht stabil. Als wahrscheinliche Ursache hat sich eine ungünstige Masseverbindung gezeigt, die unter realen Störbedingungen zu Instabilitäten führte. Zudem wurde dieser Prototyp ohne zusätzliche Kondensatoren oder spezifische Sicherungen aufgebaut, was die Robustheit im Bordnetz weiter eingeschränkt hat.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.4\linewidth]{bilder/monolitisch.png}
@@ -14,15 +22,16 @@ Der monolitische Prototyp war der erste Anlauf für einen funktionstüchtigen Au
 \end{figure}
 
 \subsection{Modularer Prototyp}
-Aufgrund der Erfahrungen mit dem ersten Aufbau wurde ein zweiter Prototyp in modularer Form gelötet. Dabei wurde die Masseführung gezielt verbessert und der Aufbau so gestaltet, dass einzelne Komponenten über Steckverbinder ein- oder ausgeklinkt werden können. Kondensatoren und Schutzbauteile lassen sich so bedarfsgerecht zuschalten, was die Fehlersuche erleichtert. Der modulare Prototyp zeigte im Lkw-Test ein stabiles Verhalten ohne die zuvor beobachteten Boot-Probleme.
+Aufgrund der Erfahrungen mit dem ersten Aufbau wurde ein zweiter Prototyp in modularer Form gelötet. Dabei wurde die Masseführung gezielt verbessert und der Aufbau so gestaltet, dass einzelne Komponenten über Steckverbinder ein- oder ausgeklinkt werden können. Kondensatoren und Schutzbauteile lassen sich so bedarfsgerecht zuschalten, was die Fehlersuche erleichtert. Die Boot-Probleme traten in dieser Version nicht mehr auf und die Verbindung zum Flutter-Tool konnte erfolgreich aufgebaut werden.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.35\linewidth]{bilder/Prototyp1.png}
+  \includegraphics[width=0.4\linewidth]{bilder/Prototyp1.png}
   \caption{Modularer Steckaufbau des zweiten THT-Prototypen.}
   \label{fig:implementierung-modular}
 \end{figure}
 
 \section{Pcb Prototyp}
+Der PCB-Prototyp wurde erst kurz vor Abschluss dieser Arbeit gefertigt und ist in diesem Zeitraum bei uns eingetroffen. Daher konnten bis zur Abgabe keine Funktionstests im realen Fahrzeugumfeld durchgeführt werden. Der Aufbau ist so gestaltet, dass sämtliche Komponenten auf der Vorderseite bestückt werden. Auf der Rückseite verlaufen nur wenige Leiterbahnen, ansonsten besteht sie überwiegend aus einer zusammenhängenden Massefläche. Ein USB-Anschluss ist auf der Platine nicht vorgesehen, da es sich um einen frühen Prototypen für das finale Produkt handelt und USB nur zum Flashen benötigt wird. Stattdessen befinden sich acht Kontaktpads auf der Oberseite, die mit einem speziell angefertigten Pogopin-Jig verbunden werden, um modular einen USB-Port bereitzustellen. Das Loch in der Mitte der Platine dient später dazu, die beiden Gehäusehälften mit einer Schraube zu verbinden. Der Schaltplan und das PCB-Layout wurden mit KiCad erstellt.
 
 \begin{figure}[H]
   \centering
@@ -39,17 +48,8 @@ Aufgrund der Erfahrungen mit dem ersten Aufbau wurde ein zweiter Prototyp in mod
 \end{figure}
 
 
-\subsection{Prototypenfertigung, Bestückung und \gls{bom}}
-\paragraph{Fertigung.}
-Standard-FR4, min. Leiterbahnbreite/-abstand 6/6\,mil oder konservativer.
-Lötstopp dunkel für bessere optische Kontrolle, Oberflächenfinish HAL/ENIG nach Verfügbarkeit.
-
-\paragraph{Bestückungsreihenfolge.}
-Zuerst kleinste und kritische Bauteile wie ESD-Arrays und 0402-MLCC, danach die Leistungsstufe mit MP1584, Induktivität, Diode und Bulk-Caps, zuletzt Steckverbinder und Mechanik.
-
-\paragraph{Vorinspektion.}
-Optische Kontrolle auf Lunker, Lotbrücken und Abstand am SW-Knoten, DMM-Messung auf Kurzschluss
-zwischen 5\,V/GND und 3{,}3\,V/GND.
+\subsection{Fertigung, Bestückung und \gls{bom}}
+Für die Fertigung wurde \gls{fr4-gloss} verwendet. Die Leiterbahnbreite und der Leiterbahnabstand liegen bei mindestens 6/6\,mil, der Lötstopp ist dunkel ausgeführt, um die optische Kontrolle zu erleichtern, und das Oberflächenfinish wurde je nach Verfügbarkeit als \gls{hal-gloss} oder \gls{enig-gloss} vorgesehen. Die PCB wurde von einem chinesischen Fertiger hergestellt. Die Bestückung erfolgte schrittweise, beginnend mit kleinsten und kritischen Bauteilen wie \gls{esd-gloss}-Arrays und 0402-\gls{mlcc-gloss}, gefolgt von der Leistungsstufe mit MP1584, Induktivität, Diode und Bulk-Caps, anschließend dem ESP32-Modul und den übrigen ICs und zuletzt Steckverbindern, LEDs und Mechanik.
 
 \begin{table}[htbp]
   \centering
@@ -59,28 +59,27 @@ zwischen 5\,V/GND und 3{,}3\,V/GND.
     \hline
     \textbf{Bauteil} & \textbf{Wert} & \textbf{Anzahl} \\
     \hline
-    C1 & 0,1 µ\gls{symb:farad} / 16 V Keramik X7R & 1 \\ \hline
-    C2, C15, C18, C19, C20 & 100 n\gls{symb:farad} X7R ≥16 V & 5 \\ \hline
-    C3 & 10 µ\gls{symb:farad} / 16 V MLCC X7R & 1 \\ \hline
-    C4, C21 & 47 n\gls{symb:farad} X7R ≥6,3 V & 2 \\ \hline
-    C5 & 10 µ\gls{symb:farad} X7R ≥6,3 V & 1 \\ \hline
-    C6 & 0,1 µ\gls{symb:farad} X7R ≥6,3 V & 1 \\ \hline
-    C7 & 10 n\gls{symb:farad} X7R ≥35 V & 1 \\ \hline
-    C8 & 0,1 µ\gls{symb:farad} / 35 V X7R & 1 \\ \hline
-    C9 & 1 µ\gls{symb:farad} X7R ≥6,3 V & 1 \\ \hline
-    C10 & 470 µ\gls{symb:farad} Elko ≥35 V & 1 \\ \hline
-    C12 & 1 n\gls{symb:farad} X7R ≥10 V & 1 \\ \hline
-    C13 & 100 µ\gls{symb:farad} / 35 V Low ESR & 1 \\ \hline
-    C14 & 10 µ\gls{symb:farad} / 50 V X7R & 1 \\ \hline
-    C16 & 100 n\gls{symb:farad} X7R ≥6,3 V & 1 \\ \hline
-    C17 & 1 n\gls{symb:farad} X7R ≥35 V & 1 \\ \hline
-    D1 & Schottky 1 A, 40–60 V & 1 \\ \hline
+    C1 & 0,1 µ\gls{symb:farad} / 16 V \gls{keramik-gloss} X7R & 1 \\ \hline
+    C2, C15, C18, C19, C20 & 100 n\gls{symb:farad} \gls{keramik-gloss} X7R ≥16 V & 5 \\ \hline
+    C3 & 10 µ\gls{symb:farad} / 16 V \gls{mlcc-gloss} \gls{keramik-gloss} X7R & 1 \\ \hline
+    C4, C21 & 47 n\gls{symb:farad} \gls{keramik-gloss} X7R ≥6,3 V & 2 \\ \hline
+    C5 & 10 µ\gls{symb:farad} \gls{keramik-gloss} X7R ≥6,3 V & 1 \\ \hline
+    C6 & 0,1 µ\gls{symb:farad} \gls{keramik-gloss} X7R ≥6,3 V & 1 \\ \hline
+    C7 & 10 n\gls{symb:farad} \gls{keramik-gloss} X7R ≥35 V & 1 \\ \hline
+    C8 & 0,1 µ\gls{symb:farad} / 35 V \gls{keramik-gloss} X7R & 1 \\ \hline
+    C9 & 1 µ\gls{symb:farad} \gls{keramik-gloss} X7R ≥6,3 V & 1 \\ \hline
+    C10 & 470 µ\gls{symb:farad} \gls{elko-gloss} ≥35 V & 1 \\ \hline
+    C12 & 1 n\gls{symb:farad} \gls{keramik-gloss} X7R ≥10 V & 1 \\ \hline
+    C13 & 100 µ\gls{symb:farad} / 35 V \gls{low-esr-gloss} & 1 \\ \hline
+    C14 & 10 µ\gls{symb:farad} / 50 V \gls{keramik-gloss} X7R & 1 \\ \hline
+    C16 & 100 n\gls{symb:farad} \gls{keramik-gloss} X7R ≥6,3 V & 1 \\ \hline
+    C17 & 1 n\gls{symb:farad} \gls{keramik-gloss} X7R ≥35 V & 1 \\ \hline
+    D1 & \gls{schottky-gloss} 1 A, 40–60 V & 1 \\ \hline
     D2 & SMBJ35A & 1 \\ \hline
     F1 & 0,9 A Sicherung & 1 \\ \hline
-    FB1 & 600 \gls{symb:ohm} @ 100 MHz Ferritperle & 1 \\ \hline
-    IC1 & L9637D & 1 \\ \hline
+    FB1 & 600 \gls{symb:ohm} @ 100 MHz \gls{ferritperle-gloss} & 1 \\ \hline
     J1 & 2×3 Stiftleiste 2,54 mm & 1 \\ \hline
-    L1 & 10 \gls{symb:microhenry} Isat ≥1,5–2 A <100 m\gls{symb:ohm} & 1 \\ \hline
+    L1 & 10 \gls{symb:microhenry} \gls{isat-gloss} ≥1,5–2 A <100 m\gls{symb:ohm} & 1 \\ \hline
     LED1 & blau & 1 \\ \hline
     LED2 & rot & 1 \\ \hline
     LED3 & gelb & 1 \\ \hline
@@ -98,12 +97,16 @@ zwischen 5\,V/GND und 3{,}3\,V/GND.
     R15, R16 & 10 k\gls{symb:ohm} 0805 & 2 \\ \hline
     U1 & ESP32-S3-WROOM-1 & 1 \\ \hline
     U2 & MP1584 & 1 \\ \hline
+    U3 & L9637D & 1 \\ \hline
     U4 & SMAJ35CA & 1 \\ \hline
     U5 & MAX3232 & 1 \\ \hline
   \end{tabularx}
   \vspace{0.5\baselineskip}
   \begin{minipage}{\textwidth}
     \footnotesize
-    \textit{Legende:} C = Kondensator, D = Diode, F = Sicherung, FB = Ferritperle, IC/U = Integrierter Schaltkreis/Modul, J = Steckverbinder, L = Induktivität, LED = Leuchtdiode, Q = Transistor/MOSFET, R = Widerstand.
+    \textit{Legende:} C = Kondensator, D = Diode, F = Sicherung, FB = \gls{ferritperle-gloss}, IC/U = Integrierter Schaltkreis/Modul, J = Steckverbinder, L = Induktivität, LED = Leuchtdiode, Q = Transistor/MOSFET, R = Widerstand.
   \end{minipage}
 \end{table}
+
+\section{Firmware und Statusanzeigen}
+Auf dem ESP32 ist eine schlanke Firmware installiert, die die grundlegenden Funktionen für den Prototyp bereitstellt. Für \gls{ble} sind einfache GATT-Characteristics implementiert, über die die App Befehle auslöst und Statusdaten empfängt. Darüber hinaus enthält die Firmware die Basislogik, um mit dem Tachographen zu kommunizieren und Datenübertragungen zu starten. Demomäßig ist die Software in der Lage, eine \code{.ddd}-Datei per Bluetooth zu übertragen, in Kombination mit der im folgenden Kapitel vorgestellten App, die dabei als Dateiexplorer dient. Die LEDs dienen als Statusanzeigen. Die Power-LED (rot) leuchtet, sobald Versorgungsspannung anliegt. Der Bluetooth-Indikator (blau) blinkt, wenn keine Verbindung besteht, und leuchtet dauerhaft bei bestehender Verbindung. Der Arbeitsindikator (gelb) blinkt, während der Tachographenspeicher gelesen wird oder Daten per Bluetooth übertragen werden.

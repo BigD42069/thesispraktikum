@@ -1,18 +1,8 @@
 
 \chapter{Grundlagen}
 
-\section{Rechtlicher Rahmen digitaler Tachographen}
-Der Einsatz digitaler Tachographen in Nutzfahrzeugen innerhalb der Europäischen Union unterliegt strengen rechtlichen Vorgaben. 
-
-\subsection{EU-Verordnung 2016/799}
-Die Durchführungsverordnung EU 2016/799 konkretisiert die EU-Vorgaben zu digitalen und intelligenten Fahrtenschreibern und definiert technische Anforderungen für Geräte und Karten.\cite{eu-2016-799}
-Anhang IC legt Begriffe, zu erfassende Größen, Genauigkeiten, Speicher- und Störfallverhalten fest und fordert Manipulationsschutz, Datensicherheit sowie \gls{gnss-gloss}- und \gls{dsrc-gloss}-Funktionen.\cite{eu-2016-799}
-\subsection{EU-Verordnung 2021/1228}
-Die Durchführungsverordnung EU 2021/1228 aktualisiert Anhang IC für den „Smart Tachograph Version 2“ und erweitert die Pflichten für grenzüberschreitenden Verkehr.\cite{eu-2021-1228}
-Vorgeschrieben sind zusätzliche Positionsaufzeichnungen bei Grenzübertritt sowie bei Be- und Entladen, eine verpflichtende ITS-Schnittstelle, vorbereitete Galileo-Authentifizierung sowie neue Datenfelder für Ereignisse und Anomalien; außerdem werden Manipulationsschutz, Kalibrier- und Kartendaten präzisiert.\cite{eu-2021-1228}
-
 \section{Funktionsweise und Datenstrukturen digitaler Tachographen}
-Digitale Tachographen erfassen Fahrzeugbewegungen sowie Fahreraktivitäten wie Fahren, Arbeiten, Bereitschaft und Ruhe und speichern diese zusammen mit Zeit- und Ereignisinformationen im Massenspeicher sowie auf der Fahrerkarte. Die Daten sind in standardisierte, strukturierte Datensätze gegliedert, darunter Fahrzeugdaten, Fahreraktivitäten sowie Ereignisse und Störungen, und werden durch Anhang IC technisch definiert. Mit Smart Tachograph Version 2 kommen zusätzliche Positions- und Ereignisdaten hinzu. Typisch sind klar abgegrenzte Datenblöcke bzw. Dateien, in denen Datensätze mit Zeitstempel, Karten-/Fahrzeugkennung und Ereigniscodes abgelegt werden, etwa für Aktivitäten, Geschwindigkeitsprofile sowie Ereignis- und Fehlerlisten.\cite{eu-2016-799,eu-2021-1228}
+Moderne Smart-Tachographen der zweiten Generation erfassen Fahr- und Ruhezeiten sowie weitere Fahrzeugdaten im Fahrzeuggerät und speichern fahrerbezogene Aktivitäten zusätzlich auf der Fahrerkarte. Fahrzeugbezogene Aktivitäten und Positionsdaten werden im Massenspeicher des Fahrzeuggeräts abgelegt, während die Fahrerkarte die persönlichen Aktivitätsdaten enthält. Der Massenspeicher ist auf etwa 12 Monate ausgelegt und arbeitet als rollender Speicher, die Fahrerkarte speichert typischerweise die letzten 28 Arbeitstage. Zusätzlich zeichnet der Smart-Tachograph \gls{gnss-gloss}-Positionsdaten und Grenzübertritte automatisiert auf. Typische Datenkategorien umfassen Fahreraktivitäten, Ereignisse und Störungen sowie Positions- und Identifikationsinformationen von Karte und Fahrzeug.\cite{vdo-dtco-4-1a-datasheet,ec-jrc-digital-tachograph-faq}
 
 \begin{figure}[H]
   \centering
@@ -21,68 +11,99 @@ Digitale Tachographen erfassen Fahrzeugbewegungen sowie Fahreraktivitäten wie F
   \label{fig:grundlagen-funktionsweise}
 \end{figure}
 
+\section{Rechtlicher Rahmen digitaler Tachographen}
+Die EU-Verordnungen 2016/799 und 2021/1228 definieren die technischen Anforderungen an digitale und intelligente Tachographen. \gls{anhang-ic-gloss} legt Begriffe, zu erfassende Größen, Genauigkeiten, Speicher- und Störfallverhalten sowie Manipulationsschutz und Datensicherheit fest und fordert Funktionen wie \gls{gnss-gloss} und \gls{dsrc-gloss}. Die Aktualisierung durch 2021/1228 ergänzt Vorgaben für den Smart Tachograph Version 2, etwa zusätzliche Positionsaufzeichnungen bei Grenzübertritt sowie bei Be- und Entladen, eine verpflichtende ITS-Schnittstelle, vorbereitete Galileo-Authentifizierung und neue Datenfelder für Ereignisse und Anomalien. Zusätzlich regelt die Verordnung (EU) Nr. 581/2010 die Downloadpflichten, darunter maximale Fristen von 90 Tagen für Daten aus dem Fahrzeuggerät und 28 Tagen für Daten von der Fahrerkarte. Relevante Daten umfassen alle aufgezeichneten Tachographendaten mit Ausnahme detaillierter Geschwindigkeitsdaten. Es zählen nur Tage mit aufgezeichneter Aktivität und der Download ist so durchzuführen, dass keine Daten verloren gehen.\cite{eu-2016-799,eu-2021-1228,eu-2010-581}
 
 
-\section{Kommunikationsschnittstellen von Tachographen}
-Moderne Tachographen unterstützen mehrere physikalische Kommunikationsschnittstellen. Besonders relevant im Kontext dieser Arbeit sind:
+
+
+\section{Kommunikationsschnittstellen digitaler Tachographen}
 \subsection{UART}
-UART steht für Universal Asynchronous Receiver/Transmitter und ist eine serielle Schnittstelle ohne gemeinsame Taktleitung; Sender und Empfänger synchronisieren sich über eine vereinbarte Baudrate. Die Datenübertragung erfolgt bitweise über getrennte \gls{tx-gloss}/\gls{rx-gloss}-Leitungen und wird durch Start- und Stopbits, optional mit \gls{parity-bit}, eingerahmt, wodurch eine einfache Vollduplex-Kommunikation möglich ist.\cite{axelson-serial-port-complete}
+UART steht für Universal Asynchronous Receiver/Transmitter und ist eine serielle Schnittstelle ohne gemeinsame Taktleitung. Sender und Empfänger synchronisieren sich über eine vereinbarte Baudrate. Die Datenübertragung erfolgt bitweise über getrennte \gls{tx-gloss}/\gls{rx-gloss}-Leitungen und wird durch Start- und Stopbits, optional mit \gls{parity-bit}, eingerahmt, wodurch eine einfache Vollduplex-Kommunikation möglich ist.\cite{microchip-pic24h-uart}
+
 \subsection{K-Line}
-Die K-Line ist eine bidirektionale, asynchrone Einleiter-Schnittstelle für Fahrzeugdiagnose, die in ISO 9141-2 und ISO 14230-2 spezifiziert ist. Sie arbeitet halbduplex mit Pull-up auf Bordnetzspannung, typische Datenraten liegen bei 10,4 kbit/s.\cite{iso-9141-2,iso-14230-2}
+Die K-Line ist eine bidirektionale, asynchrone Einleiter-Schnittstelle für Fahrzeugdiagnose, die in ISO 9141-2 und ISO 14230-2 spezifiziert ist. Sie arbeitet halbduplex mit Pull-up auf Bordnetzspannung, typische Datenraten liegen bei 10,4 kbit/s.\cite{iso-9141-2,iso-14230-2} Vor der eigentlichen Datenübertragung ist eine Initialisierung erforderlich, damit das Steuergerät auf Kommunikationsanfragen reagiert. Dabei kommen je nach Standard und Gerät ein 5-Baud-Init oder eine schnelle Initialisierung zum Einsatz. Die Übertragung erfolgt auf einer einzelnen Leitung mit gemeinsamer Masse, wodurch die Richtungsumschaltung und ein sauberes Timing für den Wechsel zwischen Senden und Empfangen wichtig sind.\cite{iso-9141-2,iso-14230-2}
 
 
 \section{Hardwaregrundlagen}
 \subsection{Überblick Mikrocontroller-Plattform ESP32}
-Die hardwareseitige Realisierung des Auslesegeräts basiert maßgeblich auf dem ESP32, einem leistungsfähigen Mikrocontroller von Espressif Systems.
+Der ESP32 ist ein 32-bit-\gls{soc-gloss} mit zwei \gls{xtensa-cores-gloss}n bis 240\,MHz und integrierter Wi‑Fi/BLE-Funktechnik. Er stellt internen SRAM bereit und bietet Peripherie wie mehrere UARTs, \gls{spi-gloss}, \gls{i2c-gloss}, \gls{adc-gloss}, PWM und Timer. Für die Protokollverarbeitung ist neben der Rechenleistung auch die Hardwareunterstützung für Kryptografie relevant, die sichere Kommunikation erleichtert. Der SoC stellt außerdem Low‑Power‑Funktionen wie Sleep‑Modi und einen RTC‑Bereich bereit, was für energieeffiziente Zustände im Feldbetrieb nützlich ist. Insgesamt eignet sich der ESP32 damit für Anwendungen, die sowohl Konnektivität als auch lokale Datenverarbeitung erfordern.\cite{espressif-esp32}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\linewidth]{bilder/esp.png}
-  \caption{Beispielhafte Visualisierung des ESP32-S3-WROOM-1 Moduls.}
+  \includegraphics[width=0.2\linewidth]{bilder/esp.png} 
+  \caption{Darstellung eines ESP32-S3-DevKitC-1.}
   \label{fig:grundlagen-esp32}
 \end{figure}
 
-\subsubsection{Architektur und Leistungsdaten}
-Der ESP32 ist ein 32-bit-\gls{soc-gloss} mit zwei \gls{xtensa-cores-gloss} bis 240\,MHz und integrierter Wi-Fi/BLE-Funktechnik. Er stellt SRAM, vielfältige Peripherie wie UART, \gls{spi-gloss}, I\textsuperscript{2}C, \gls{adc-gloss} und Timer sowie Hardwareunterstützung für Kryptografie bereit und eignet sich damit für Protokollverarbeitung und sichere Kommunikation.\cite{espressif-esp32}
+\subsection{Vorteile eines ESP32-DevKits}
+ESP32-DevKits bündeln Mikrocontroller, Spannungsversorgung und Debug-Schnittstellen auf einer fertigen Platine. Bei DevKitC-Boards sind die meisten GPIOs über Stiftleisten herausgeführt, wodurch sich Peripherie schnell verdrahten und das Board auch auf dem Breadboard einsetzen lässt.
+Eine USB-to-UART-Brücke, eine USB-Stromversorgung sowie Boot- und Reset-Taster ermöglichen das komfortable Flashen und Testen der Firmware direkt am PC.
+Die Boards bieten mehrere Versorgungsoptionen über USB, 5\,V oder 3{,}3\,V Pins und enthalten in der Regel eine 5-V-zu-3{,}3-V-Regelung.
+Diese Ausstattung erleichtert typischerweise die Inbetriebnahme und reduziert den Aufwand für eigene Grundschaltungen in frühen Prototypen.\cite{espressif-esp32-devkitc-v4,espressif-esp32s3-devkitc-1}
 
-\subsubsection{Bluetooth low energy}
-Bluetooth Low Energy, abgekürzt \gls{ble}, nutzt das 2{,}4\,GHz-ISM-Band mit 40 Kanälen und \gls{gfsk}-Modulation; je nach PHY sind Datenraten von 125\,kbit/s bis 2\,Mbit/s möglich. Der ESP32 integriert den BLE-Funkblock für energiearme, kurze Funkverbindungen, z.\,B. für mobile UI-Anbindung oder Telemetrie.\cite{bluetooth-core54,espressif-esp32}
-Zusätzlich besitzt der ESP32 mehrere UART-Schnittstellen, wodurch separate Kommunikationskanäle für Datenübertragung und Kalibrierung/Pegelkontrolle gegenläufiger Signale realisiert werden können.
+\newpage
 
-
-\subsection{Relevante Zusatzkomponenten}
-Zur Ergänzung des ESP32 kommen im Projektaufbau mehrere unterstützende Hardwarekomponenten zum Einsatz:
-
-\subsubsection{MAX3232 Pegelwandler}
-Der MAX3232 ist ein RS-232-Pegelwandler, der TTL/CMOS-Logikpegel von 3{,}0 bis 5{,}5\,V auf RS-232-Pegel und umgekehrt umsetzt. Er arbeitet mit Einzelversorgung und erzeugt die erforderlichen $\pm$-Pegel über integrierte Ladungspumpen, wodurch er sich für die Anbindung klassischer RS-232-Schnittstellen eignet.\cite{ti-max3232}
+\subsection{MAX3232 Pegelwandler}
+Der MAX3232 ist ein \gls{rs232-pegel-gloss}, der \gls{ttl-cmos-gloss} von 3{,}0 bis 5{,}5\,V auf \gls{rs232-pegel-gloss} und umgekehrt umsetzt. Er arbeitet mit Einzelversorgung und erzeugt die erforderlichen $\pm$-Pegel über integrierte Ladungspumpen, wodurch er sich für die Anbindung klassischer RS-232-Schnittstellen eignet.\cite{ti-max3232}
 
 
-\begin{center}
-  \includegraphics[width=0.2\linewidth]{bilder/max3232.png}
-  \captionof{figure}{Darstellung eines MAX3232.}
-  \label{fig:grundlagen-max3232}
-\end{center}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[c]{0.4\linewidth}
+    \centering
+    \vspace{-0.2cm}
+    \includegraphics[width=\linewidth,angle=90,origin=c]{bilder/max3232.jpeg}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c]{0.4\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{bilder/max3232sh.png}
+  \end{minipage}
+  \caption{Darstellung eines MAX3232 und dessen Schaltplan.}\label{fig:grundlagen-max3232}
+\end{figure}
 
-\subsubsection{L9637D K-Line Transceiver}
+\subsection{L9637D K-Line Transceiver}
 Der L9637D ist ein K-Line-Transceiver nach ISO 9141/14230, der die Pegelanpassung und Treiber-/Empfängerstufen für die Fahrzeugdiagnose bereitstellt. Er wird mit Bordnetzspannung betrieben und bietet Schutzfunktionen für den Einsatz in der rauen Automotive-Umgebung.\cite{st-l9637d}
 
-\begin{center}
-  \includegraphics[width=0.5\linewidth]{bilder/l9637d.png}
-  \captionof{figure}{Visualisierung des L9637d.}
-  \label{fig:grundlagen-kline}
-\end{center}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{bilder/l9637d.png}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{bilder/l9637dsh.png}
+  \end{minipage}
+  \caption{Darstellung eines L9637D und dessen Schaltplan.}\label{fig:grundlagen-l9637d}
+\end{figure}
 
-\subsubsection{MP1584EN-LF-Z Step-Down Regler}
-Der MP1584EN ist ein Abwärtsregler, auch Buck genannt, mit hoher Effizienz zur Versorgung aus 12/24-V-Bordnetzen. Er integriert Schalter, Regelung und Schutzfunktionen und erlaubt kompakte, stromstabile 3,3-V- oder 5-V-Versorgungen für das System.\cite{mps-mp1584}
-\begin{center}
-  \includegraphics[width=0.4\linewidth]{bilder/mp1584.png}
-  \captionof{figure}{Darstellung eines MP1584 step-down Reglers.}
-  \label{fig:grundlagen-mp1584}
-\end{center}
+\newpage
+\subsection{MP1584EN-LF-Z Step-Down Regler}
+Der MP1584EN ist ein Abwärtsregler, auch Buck genannt, mit hoher Effizienz zur Versorgung aus 24-V-Bordnetzen. Er integriert Schalter, Regelung und Schutzfunktionen und erlaubt kompakte, stromstabile 3,3-V- oder 5-V-Versorgungen für das System.\cite{mps-mp1584}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[c]{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{bilder/mp1584.png}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c]{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{bilder/mp1584sh.jpg}
+  \end{minipage}
+  \caption{Darstellung eines MP1584EN Step-Down Reglers und dessen Schaltplan.}\label{fig:grundlagen-mp1584}
+\end{figure}
 
 \section{Softwaregrundlagen}
 Dieser Abschnitt fasst die softwareseitigen Grundlagen für die App sowie die Software auf dem ESP32 zusammen.
 \subsection{Flutter}
-Flutter ist ein plattformübergreifendes UI-Framework von Google, das Apps aus einer gemeinsamen Codebasis für Android, iOS, Web und Desktop erzeugt. Die Umsetzung erfolgt in der Sprache Dart, die eine reaktive UI-Struktur und schnelle Entwicklungszyklen ermöglicht. Flutter folgt einem deklarativen UI-Ansatz auf Basis von Widgets, die in einem hierarchischen Baum zusammengesetzt werden, und rendert die Oberfläche mit einer eigenen Engine, wodurch konsistentes Verhalten über Plattformen hinweg erreicht wird. Für die App sind insbesondere die asynchronen Programmiermodelle von Dart sowie die gute Unterstützung für plattformnahe Schnittstellen relevant, weil Datenströme, Gerätekopplung und Anzeigezustände sauber entkoppelt werden können. Zusätzlich erleichtern Hot Reload und ein umfangreiches Paket-Ökosystem die iterative Entwicklung und Erweiterung der Anwendung.\cite{flutter-docs}
+Flutter ist ein plattformübergreifendes UI-Framework von Google, das Apps aus einer gemeinsamen Codebasis für Android, iOS, Web und Desktop ermöglicht. Die Entwicklung erfolgt in Dart und folgt einem deklarativen Widget-Ansatz, wodurch Oberflächen konsistent gerendert werden. Für die App sind insbesondere asynchrone Datenflüsse und eine klare Trennung von UI und Logik relevant. Hot Reload und das Paket-Ökosystem unterstützen die iterative Entwicklung.\cite{flutter-docs}
 \subsection{Espressif ESP-IDF}
-Das Espressif IoT Development Framework (ESP-IDF) ist das offizielle Entwicklungs-Framework für den ESP32. Es stellt Treiber, Netzwerk-Stacks und Systemfunktionen bereit und bildet die Grundlage für die Firmwareentwicklung in C/C++. ESP-IDF basiert auf FreeRTOS und bietet ein Komponentenmodell, Task-Scheduling, Ereignis- und Logging-Mechanismen sowie Build- und Konfigurationswerkzeuge. Dadurch lassen sich zeitkritische Aufgaben wie UART-Kommunikation, Protokollverarbeitung und die Steuerung von Peripherie strukturiert implementieren. Für diese Arbeit ist ESP-IDF relevant, weil damit die Hardwarezugriffe, Kommunikationsprotokolle und die Systemsteuerung des Auslesegeräts umgesetzt werden und die Firmware gleichzeitig wartbar und erweiterbar bleibt.\cite{espressif-esp-idf}
+Das Espressif IoT Development Framework (ESP-IDF) ist das offizielle Entwicklungs-Framework für den ESP32. Es stellt Treiber, Netzwerk-Stacks und Systemfunktionen bereit und bildet die Grundlage für die Firmwareentwicklung in C/C++. ESP-IDF basiert auf \gls{freertos-gloss} und bietet ein Komponentenmodell, Task-Scheduling, Ereignis- und Logging-Mechanismen sowie Build- und Konfigurationswerkzeuge. Dadurch lassen sich zeitkritische Aufgaben wie UART-Kommunikation, Protokollverarbeitung und die Steuerung von Peripherie strukturiert implementieren. Für diese Arbeit ist ESP-IDF relevant, weil damit die Hardwarezugriffe, Kommunikationsprotokolle und die Systemsteuerung des Auslesegeräts umgesetzt werden und die Firmware gleichzeitig wartbar und erweiterbar bleibt.\cite{espressif-esp-idf}
+
+\subsection{Bluetooth Low Energy}
+Bluetooth Low Energy, abgekürzt \gls{ble}, nutzt das 2{,}4\,GHz-\gls{ism-band} mit 40 Kanälen und einer FSK-Variantenmodulation. Je nach PHY sind Datenraten von 125\,kbit/s bis 2\,Mbit/s möglich. Der ESP32 integriert den BLE-Funkblock für energiearme, kurze Funkverbindungen, z.\,B. für mobile UI-Anbindung oder Telemetrie. Für den Verbindungsaufbau werden Advertising- und Verbindungsintervalle genutzt. Anwendungsdaten werden typischerweise über das \gls{gatt-gloss}-Modell in Services und Characteristics strukturiert. Dadurch lassen sich Zustandsdaten und Steuerbefehle effizient austauschen, ohne eine permanente Funkaktivität zu erzwingen.\cite{bluetooth-core54,espressif-esp32}

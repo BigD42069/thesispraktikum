@@ -1,64 +1,55 @@
 \babel@toc {ngerman}{}\relax 
-\contentsline {chapter}{\numberline {1}Einleitung}{5}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Vorstellung des Unternehmens}{5}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Motivation und Problemstellung}{5}{section.1.2}%
-\contentsline {chapter}{\numberline {2}Grundlagen}{6}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Rechtlicher Rahmen digitaler Tachographen}{6}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}EU-Verordnung 2016/799}{6}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}EU-Verordnung 2021/1228}{6}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2.2}Funktionsweise und Datenstrukturen digitaler Tachographen}{6}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Kommunikationsschnittstellen von Tachographen}{7}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}UART}{7}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}K-Line}{7}{subsection.2.3.2}%
-\contentsline {section}{\numberline {2.4}Hardwaregrundlagen}{7}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Überblick Mikrocontroller-Plattform ESP32}{7}{subsection.2.4.1}%
-\contentsline {subsubsection}{\numberline {2.4.1.1}Architektur und Leistungsdaten}{8}{subsubsection.2.4.1.1}%
-\contentsline {subsubsection}{\numberline {2.4.1.2}Bluetooth low energy}{8}{subsubsection.2.4.1.2}%
-\contentsline {subsection}{\numberline {2.4.2}Relevante Zusatzkomponenten}{8}{subsection.2.4.2}%
-\contentsline {subsubsection}{\numberline {2.4.2.1}MAX3232 Pegelwandler}{9}{subsubsection.2.4.2.1}%
-\contentsline {subsubsection}{\numberline {2.4.2.2}L9637D K-Line Transceiver}{9}{subsubsection.2.4.2.2}%
-\contentsline {subsubsection}{\numberline {2.4.2.3}MP1584EN-LF-Z Step-Down Regler}{9}{subsubsection.2.4.2.3}%
-\contentsline {section}{\numberline {2.5}Softwaregrundlagen}{10}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Flutter}{10}{subsection.2.5.1}%
+\contentsline {chapter}{\numberline {1}Einleitung}{4}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Grundlagen}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Funktionsweise und Datenstrukturen digitaler Tachographen}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Rechtlicher Rahmen digitaler Tachographen}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Kommunikationsschnittstellen digitaler Tachographen}{6}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}UART}{6}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}K-Line}{6}{subsection.2.3.2}%
+\contentsline {section}{\numberline {2.4}Hardwaregrundlagen}{6}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Überblick Mikrocontroller-Plattform ESP32}{6}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Vorteile eines ESP32-DevKits}{7}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}MAX3232 Pegelwandler}{8}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}L9637D K-Line Transceiver}{8}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}MP1584EN-LF-Z Step-Down Regler}{9}{subsection.2.4.5}%
+\contentsline {section}{\numberline {2.5}Softwaregrundlagen}{9}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Flutter}{9}{subsection.2.5.1}%
 \contentsline {subsection}{\numberline {2.5.2}Espressif ESP-IDF}{10}{subsection.2.5.2}%
-\contentsline {chapter}{\numberline {3}Analyse der Anforderungen}{12}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Funktionale Anforderungen}{13}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Nicht-funktionale Anforderungen}{14}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Sicherheits- und Datenschutzanforderungen}{15}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Technische Spezifikationen gemäß Normen}{16}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Systementwurf}{17}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Schaltungsaufbau und Stromversorgung}{17}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Bordnetzeingang und Schutzstufen}{18}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Masse- und \gls {emv}-Konzept}{18}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}Schnittstellen- und Pegelkonzepte}{18}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}RS-232 über MAX3232}{18}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}K-Line über L9637D}{19}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}USB-C-Geräteschnittstelle}{19}{subsection.4.2.3}%
-\contentsline {chapter}{\numberline {5}Implementierung}{20}{chapter.5}%
-\contentsline {section}{\numberline {5.1}THT-Prototypen}{20}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Monolitischer Prototyp}{20}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Modularer Prototyp}{21}{subsection.5.1.2}%
-\contentsline {section}{\numberline {5.2}Pcb Prototyp}{22}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Prototypenfertigung, Bestückung und \gls {bom}}{22}{subsection.5.2.1}%
-\contentsline {paragraph}{\nonumberline Fertigung.}{22}{paragraph*.16}%
-\contentsline {paragraph}{\nonumberline Bestückungsreihenfolge.}{22}{paragraph*.18}%
-\contentsline {paragraph}{\nonumberline Vorinspektion.}{22}{paragraph*.20}%
-\contentsline {chapter}{\numberline {6}Applikation}{24}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Technische Eigenschaften der App}{24}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Funktionen der App}{24}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Geplante Erweiterungen}{27}{section.6.3}%
-\contentsline {chapter}{\numberline {7}Diskussion}{28}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Erfüllung der Anforderungen}{28}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Grenzen des Prototyps}{28}{section.7.2}%
-\contentsline {chapter}{\numberline {8}Fazit und Ausblick}{29}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Zusammenfassung der Ergebnisse}{29}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Potenzielle Weiterentwicklungen}{29}{section.8.2}%
-\contentsline {section}{\numberline {8.3}Einsatzmöglichkeiten in der Praxis}{29}{section.8.3}%
-\contentsline {chapter}{\nonumberline Literaturverzeichnis}{31}{chapter*.25}%
-\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{33}{chapter*.26}%
-\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{34}{chapter*.27}%
-\contentsline {chapter}{Abkürzungsverzeichnis}{35}{section*.28}%
-\contentsline {chapter}{Symbolverzeichnis}{36}{section*.30}%
-\contentsline {chapter}{Glossar}{37}{section*.32}%
-\contentsline {chapter}{Selbstständigkeitserklärung}{38}{chapter*.34}%
+\contentsline {subsection}{\numberline {2.5.3}Bluetooth Low Energy}{10}{subsection.2.5.3}%
+\contentsline {chapter}{\numberline {3}Analyse der Anforderungen}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Funktionale Anforderungen}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Nicht-funktionale Anforderungen}{12}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Sicherheits- und Datenschutzanforderungen}{13}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Systementwurf}{14}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Schaltungsaufbau}{14}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Bordnetzeingang und Schutzstufen}{14}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Masse- und \gls {emv}-Konzept}{15}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Schnittstellen- und Pegelkonzepte}{15}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}RS-232 über MAX3232}{15}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}K-Line über L9637D}{15}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}USB-C-Schnittstelle}{15}{subsection.4.2.3}%
+\contentsline {chapter}{\numberline {5}Implementierung}{16}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Breadboard-Aufbau}{16}{section.5.1}%
+\contentsline {section}{\numberline {5.2}THT-Prototypen}{17}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Monolitischer Prototyp}{17}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Modularer Prototyp}{18}{subsection.5.2.2}%
+\contentsline {section}{\numberline {5.3}Pcb Prototyp}{18}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Fertigung, Bestückung und \gls {bom}}{19}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Firmware und Statusanzeigen}{21}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Applikation}{22}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Technische Eigenschaften der App}{22}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Funktionen der App}{23}{section.6.2}%
+\contentsline {chapter}{\numberline {7}Diskussion}{26}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Erfüllung der Anforderungen}{26}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Grenzen des Prototyps}{26}{section.7.2}%
+\contentsline {chapter}{\numberline {8}Fazit und Ausblick}{27}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Zusammenfassung der Ergebnisse}{27}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Potenzielle Weiterentwicklungen}{27}{section.8.2}%
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{28}{chapter*.21}%
+\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{30}{chapter*.22}%
+\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{31}{chapter*.23}%
+\contentsline {chapter}{Abkürzungsverzeichnis}{32}{section*.24}%
+\contentsline {chapter}{Symbolverzeichnis}{33}{section*.26}%
+\contentsline {chapter}{Glossar}{34}{section*.28}%
+\contentsline {chapter}{Selbstständigkeitserklärung}{36}{chapter*.30}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
